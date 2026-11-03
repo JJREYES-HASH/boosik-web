@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Boosik Digital</title>
+<meta name="description" content="Sites web, cartes NFC d'avis Google et fiches Google optimisées pour les commerces de proximité du Val-d'Oise. Site livré en 72 h, prix fixes.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%23070a24'/%3E%3Cpath d='M11 8h11.5a7.3 7.3 0 0 1 5.2 12.4A8 8 0 0 1 23.5 32H11Z' fill='%23fbf3e8'/%3E%3Cpath d='m16.5 19.5 4-3.8h4.3l-4 3.8Z' fill='%2300e8f5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: héro texte + vitrine d'exemples inclinée, offres à prix fixes en grille, exemples, méthode en 3 étapes, cartes NFC, FAQ, contact. */
+:root {
+  --fond: #fbf6ef;        /* crème du logo */
+  --papier: #ffffff;
+  --encre: #070a24;       /* bleu nuit du logo */
+  --encre-2: #555a78;
+  --violet: #070a24;      /* couleur principale : boutons, blocs forts */
+  --accent-texte: #007a85;/* cyan foncé, lisible sur fond clair */
+  --citron: #00e8f5;      /* cyan du logo : surlignage, badges */
+  --ligne: #e8e1d6;
+  --sur-violet: #fbf3e8;
+  --titre: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --texte: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fond: #070a24; --papier: #0f1433; --encre: #fbf3e8; --encre-2: #a7acc8;
+    --violet: #00e5f2; --accent-texte: #3df0fa; --citron: #00e8f5; --ligne: #20264d; --sur-violet: #070a24; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --fond: #070a24; --papier: #0f1433; --encre: #fbf3e8; --encre-2: #a7acc8;
+  --violet: #00e5f2; --accent-texte: #3df0fa; --citron: #00e8f5; --ligne: #20264d; --sur-violet: #070a24; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--fond); color: var(--encre); font-family: var(--texte); font-size: 17px; line-height: 1.6; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--fond); }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--violet); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1140px; margin: 0 auto; padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--titre); font-weight: 800; line-height: 1.02; letter-spacing: -.02em; margin: 0; text-wrap: balance; }
+.etiquette { display: inline-block; font-weight: 600; font-size: 14px; color: var(--accent-texte); letter-spacing: .02em; }
+
+header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--fond) 90%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--ligne); }
+header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.logo { font-family: var(--titre); font-weight: 800; font-size: 25px; letter-spacing: -.03em; text-decoration: none; display: flex; align-items: baseline; gap: 6px; }
+.logo { align-items: center; }
+.logo .marque { width: 34px; height: 34px; flex: none; }
+.logo .mot { text-transform: uppercase; letter-spacing: .04em; font-size: 22px; }
+.logo small { text-transform: uppercase; letter-spacing: .28em; font-size: 11px; color: var(--accent-texte); font-weight: 600; }
+.logo small { font-family: var(--texte); font-weight: 500; font-size: 14px; color: var(--encre-2); letter-spacing: 0; }
+nav { display: flex; gap: 26px; font-size: 15px; font-weight: 500; }
+nav a { text-decoration: none; color: var(--encre-2); }
+nav a:hover { color: var(--encre); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 600 16px/1 var(--texte); padding: 15px 22px; border-radius: 10px; text-decoration: none; border: 1.5px solid transparent; cursor: pointer; }
+.btn-violet { background: var(--violet); color: var(--sur-violet); }
+.btn-violet:hover { filter: brightness(1.08); }
+.btn-ligne { border-color: var(--encre); color: var(--encre); background: transparent; }
+.btn-ligne:hover { background: var(--encre); color: var(--fond); }
+header .btn { padding: 11px 16px; font-size: 15px; }
+
+.hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; padding-block: 72px 80px; }
+.hero h1 { font-size: clamp(46px, 6.6vw, 84px); margin: 14px 0 22px; }
+.hero h1 mark { background: linear-gradient(transparent 60%, var(--citron) 60%); color: inherit; padding: 0 .06em; }
+.hero p { color: var(--encre-2); font-size: 19px; max-width: 40ch; margin: 0 0 30px; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.garanties { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 30px; font-size: 15px; color: var(--encre-2); }
+.garanties span::before { content: "✓"; color: var(--accent-texte); font-weight: 700; margin-right: 7px; }
+.vitrine { position: relative; min-height: 420px; }
+.vitrine figure { margin: 0; position: absolute; border-radius: 12px; overflow: hidden; box-shadow: 0 18px 50px rgba(7, 10, 36, .18); border: 1px solid var(--ligne); background: var(--papier); }
+.vitrine figure img { width: 100%; aspect-ratio: 1000 / 672; object-fit: cover; }
+.vitrine .v1 { width: 78%; top: 0; right: 0; transform: rotate(2deg); }
+.vitrine .v2 { width: 62%; bottom: 0; left: 0; transform: rotate(-3deg); }
+.badge { position: absolute; left: 44%; top: 46%; z-index: 2; background: var(--citron); color: #070a24; font-family: var(--titre); font-weight: 800; font-size: 20px; padding: 12px 16px; border-radius: 12px; transform: rotate(-4deg); box-shadow: 0 10px 30px rgba(7,10,36,.18); line-height: 1.1; }
+.badge small { display: block; font-family: var(--texte); font-weight: 500; font-size: 13px; }
+
+section { padding-block: 84px; }
+.entete { display: flex; justify-content: space-between; align-items: end; gap: 16px 40px; flex-wrap: wrap; margin-bottom: 36px; }
+.entete h2 { font-size: clamp(36px, 4.8vw, 56px); max-width: 16ch; }
+.entete p { color: var(--encre-2); max-width: 44ch; margin: 0; }
+
+.offres { background: var(--papier); border-block: 1px solid var(--ligne); }
+.grille-offres { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 16px; }
+.offre { border: 1px solid var(--ligne); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 12px; background: var(--fond); min-width: 0; }
+.offre.vedette { background: var(--violet); color: var(--sur-violet); border-color: var(--violet); grid-row: span 2; }
+.offre h3 { font-size: 26px; }
+.offre p { margin: 0; color: var(--encre-2); font-size: 16px; }
+.offre.vedette p, .offre.vedette li { color: color-mix(in srgb, var(--sur-violet) 85%, transparent); }
+.offre ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 16px; }
+.prix { margin-top: auto; padding-top: 14px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.prix strong { font-family: var(--titre); font-size: 44px; font-weight: 800; letter-spacing: -.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+.prix span { font-size: 15px; color: var(--encre-2); }
+.offre.vedette .prix span { color: color-mix(in srgb, var(--sur-violet) 80%, transparent); }
+.offre.vedette .btn { background: var(--fond); color: var(--encre); align-self: flex-start; margin-top: 8px; }
+
+.exemples { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.exemple { text-decoration: none; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.exemple .cadre { border-radius: 12px; overflow: hidden; border: 1px solid var(--ligne); background: var(--papier); }
+.exemple .barre { display: flex; gap: 6px; padding: 9px 12px; border-bottom: 1px solid var(--ligne); }
+.exemple .barre i { width: 9px; height: 9px; border-radius: 50%; background: var(--ligne); }
+.exemple img { aspect-ratio: 1000 / 672; object-fit: cover; transition: transform .4s ease; }
+.exemple:hover img { transform: scale(1.03); }
+.exemple b { font-family: var(--titre); font-size: 21px; font-weight: 700; display: block; }
+.exemple span { color: var(--encre-2); font-size: 15px; }
+.note-demo { color: var(--encre-2); font-size: 14px; margin-top: 18px; }
+
+.etapes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1.5px solid var(--encre); }
+.etape { padding: 26px 26px 0 0; display: flex; flex-direction: column; gap: 10px; }
+.etape + .etape { padding-left: 26px; border-left: 1px solid var(--ligne); }
+.etape .num { font-family: var(--titre); font-weight: 800; font-size: 15px; color: var(--accent-texte); }
+.etape h3 { font-size: 24px; }
+.etape p { margin: 0; color: var(--encre-2); }
+
+.nfc { background: #070a24; color: #fbf3e8; }
+.nfc .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.nfc h2 { font-size: clamp(36px, 4.6vw, 54px); margin: 12px 0 18px; }
+.nfc p { color: rgba(251, 243, 232, .78); margin: 0 0 14px; max-width: 46ch; }
+.nfc .etiquette { color: #00e8f5; }
+.carte-nfc { aspect-ratio: 85.6 / 54; max-width: 400px; width: 100%; margin-inline: auto; border-radius: 18px; background: #fbf3e8; color: #070a24; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 24px 60px rgba(0,0,0,.35); transform: rotate(-4deg); position: relative; }
+.carte-nfc .ondes { position: absolute; right: 24px; top: 24px; width: 46px; height: 46px; }
+.carte-nfc b { font-family: var(--titre); font-size: 28px; line-height: 1.05; font-weight: 800; }
+.carte-nfc .etoiles { color: #007a85; letter-spacing: 3px; font-size: 20px; }
+.carte-nfc small { opacity: .85; font-size: 13px; }
+
+.faq { max-width: 820px; }
+details { border-bottom: 1px solid var(--ligne); padding-block: 18px; }
+summary { font-family: var(--titre); font-weight: 700; font-size: 21px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--accent-texte); font-weight: 800; }
+details[open] summary::after { content: "–"; }
+details p { color: var(--encre-2); margin: 10px 0 0; max-width: 64ch; }
+
+.contact { background: var(--violet); color: var(--sur-violet); }
+.contact .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; }
+.contact h2 { font-size: clamp(38px, 5.4vw, 64px); }
+.contact p { color: color-mix(in srgb, var(--sur-violet) 85%, transparent); margin: 16px 0 0; max-width: 42ch; }
+.boite { background: var(--papier); color: var(--encre); border-radius: 16px; padding: 26px; display: flex; flex-direction: column; gap: 14px; }
+.boite .mail { font-family: var(--titre); font-weight: 700; font-size: clamp(18px, 2.2vw, 22px); word-break: break-all; }
+.boite .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.boite small { color: var(--encre-2); }
+
+footer { color: var(--encre-2); font-size: 14px; }
+footer .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding-block: 36px; }
+footer h4 { font-family: var(--titre); color: var(--encre); margin: 0 0 6px; font-size: 16px; }
+footer p { margin: 0; }
+
+@media (max-width: 900px) {
+  nav { display: none; }
+  .hero .wrap, .nfc .wrap, .contact .wrap { grid-template-columns: 1fr; }
+  .vitrine { min-height: 340px; }
+  .grille-offres { grid-template-columns: 1fr 1fr; }
+  .offre.vedette { grid-column: 1 / -1; grid-row: auto; }
+  .exemples { grid-template-columns: 1fr; }
+  .etapes { grid-template-columns: 1fr; }
+  .etape, .etape + .etape { padding: 22px 0; border-left: 0; border-bottom: 1px solid var(--ligne); }
+  footer .wrap { grid-template-columns: 1fr; }
+  section { padding-block: 64px; }
+}
+@media (max-width: 560px) {
+  .grille-offres { grid-template-columns: 1fr; }
+  .vitrine { min-height: 260px; }
+  .badge { left: 34%; font-size: 17px; }
+  header .btn { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .exemple img { transition: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#haut" aria-label="Boosik Digital, accueil">
+      <svg class="marque" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#070a24"/>
+        <path d="M11 8h11.5a7.3 7.3 0 0 1 5.2 12.4A8 8 0 0 1 23.5 32H11Z" fill="#fbf3e8"/>
+        <path d="M16 13h6a3 3 0 0 1 0 6h-6Zm3 9h4.5a3.4 3.4 0 0 1 0 6.8H19Z" fill="#070a24"/>
+        <path d="M9 27 25 12" stroke="#070a24" stroke-width="2.6"/><path d="m16.5 19.5 4-3.8h4.3l-4 3.8Z" fill="#00e8f5"/></svg>
+      <span class="mot">Boosik</span><small>Digital</small></a>
+    <nav aria-label="Navigation principale">
+      <a href="#offres">Offres</a>
+      <a href="#exemples">Exemples</a>
+      <a href="#methode">Comment ça marche</a>
+      <a href="#faq">Questions</a>
+    </nav>
+    <a class="btn btn-violet" href="#contact">Nous écrire</a>
+  </div>
+</header>
+
+<main id="haut">
+  <section class="hero" style="padding-block:0">
+    <div class="wrap">
+      <div>
+        <span class="etiquette">Commerces de proximité · Cergy et Val-d'Oise</span>
+        <h1>Vos clients vous cherchent sur Google. <mark>Soyez là.</mark></h1>
+        <p>Un site web clair, une fiche Google soignée et plus d'avis clients. Pour les restaurants, salons, garages et boutiques du quartier, à prix fixes.</p>
+        <div class="cta">
+          <a class="btn btn-violet" href="#exemples">Voir des exemples</a>
+          <a class="btn btn-ligne" href="#offres">Voir les prix</a>
+        </div>
+        <div class="garanties"><span>Site en ligne en 72 h</span><span>Tout se fait par écrit</span><span>Prix annoncé, pas de surprise</span></div>
+      </div>
+      <div class="vitrine" aria-hidden="true">
+        <figure class="v1"><img src="img/osteria-ventidue.jpg" alt=""></figure>
+        <figure class="v2"><img src="img/garage-brunel.jpg" alt=""></figure>
+        <div class="badge">290 €<small>site complet, 72 h</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="offres" id="offres">
+    <div class="wrap">
+      <div class="entete">
+        <h2>Des offres simples, des prix fixes</h2>
+        <p>Pas d'abonnement obligatoire, pas de devis compliqué. Vous savez exactement ce que vous payez avant de commencer.</p>
+      </div>
+      <div class="grille-offres">
+        <div class="offre vedette">
+          <span class="etiquette" style="color:var(--citron)">Le plus demandé</span>
+          <h3>Site web professionnel</h3>
+          <p>Une page claire qui donne envie de venir chez vous, pensée d'abord pour le téléphone.</p>
+          <ul>
+            <li>Design sur mesure, à vos couleurs</li>
+            <li>Carte, tarifs ou prestations, horaires, accès</li>
+            <li>Bouton d'appel, itinéraire et formulaire de contact</li>
+            <li>Bien visible sur Google</li>
+            <li>Livré en 72 h après réception de vos photos</li>
+          </ul>
+          <div class="prix"><strong>290 €</strong><span>une seule fois</span></div>
+          <a class="btn" href="#contact">Je veux mon site</a>
+        </div>
+        <div class="offre">
+          <h3>Cartes NFC avis Google</h3>
+          <p>10 cartes « Laissez un avis » : le client approche son téléphone et arrive directement sur votre page d'avis.</p>
+          <div class="prix"><strong>50 €</strong><span>le pack de 10 · livré en 7 à 10 jours</span></div>
+        </div>
+        <div class="offre">
+          <h3>Fiche Google optimisée</h3>
+          <p>Photos, horaires, description, catégories et services : on remet votre fiche Google Maps à niveau.</p>
+          <div class="prix"><strong>100 €</strong><span>une seule fois</span></div>
+        </div>
+        <div class="offre">
+          <h3>Maintenance</h3>
+          <p>Nouveau menu, horaires d'été, photo à changer : on s'en occupe. Sans engagement.</p>
+          <div class="prix"><strong>20 €</strong><span>par mois</span></div>
+        </div>
+        <div class="offre">
+          <h3>Pack complet</h3>
+          <p>Site web + fiche Google + 10 cartes NFC. Tout ce qu'il faut pour être trouvé et recommandé.</p>
+          <div class="prix"><strong>390 €</strong><span>au lieu de 440 € séparément</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="exemples">
+    <div class="wrap">
+      <div class="entete">
+        <h2>Des exemples à ouvrir sur votre téléphone</h2>
+        <p>Chaque commerce a sa propre identité : pas de modèle copié-collé.</p>
+      </div>
+      <div class="exemples">
+        <a class="exemple" href="exemples/osteria-ventidue/index.html" target="_blank" rel="noopener">
+          <div class="cadre"><div class="barre"><i></i><i></i><i></i></div><img src="img/osteria-ventidue.jpg" alt="Site d'exemple d'une pizzeria" loading="lazy"></div>
+          <div><b>Pizzeria</b><span>Carte, horaires du jour, réservation</span></div>
+        </a>
+        <a class="exemple" href="exemples/atelier-noe/index.html" target="_blank" rel="noopener">
+          <div class="cadre"><div class="barre"><i></i><i></i><i></i></div><img src="img/atelier-noe.jpg" alt="Site d'exemple d'un salon de coiffure" loading="lazy"></div>
+          <div><b>Salon de coiffure</b><span>Tarifs par catégorie, équipe, prise de rendez-vous</span></div>
+        </a>
+        <a class="exemple" href="exemples/garage-brunel/index.html" target="_blank" rel="noopener">
+          <div class="cadre"><div class="barre"><i></i><i></i><i></i></div><img src="img/garage-brunel.jpg" alt="Site d'exemple d'un garage automobile" loading="lazy"></div>
+          <div><b>Garage automobile</b><span>Forfaits à prix fixe, demande de devis par plaque</span></div>
+        </a>
+      </div>
+      <p class="note-demo">Ces trois sites sont des démonstrations réalisées pour des commerces fictifs.</p>
+    </div>
+  </section>
+
+  <section id="methode" style="padding-top:0">
+    <div class="wrap">
+      <div class="entete"><h2>Comment ça marche</h2><p>Pas de rendez-vous à caler : tout se fait par email ou WhatsApp, quand vous avez un moment.</p></div>
+      <div class="etapes">
+        <div class="etape"><span class="num">Étape 1</span><h3>Vous nous écrivez</h3><p>On vous envoie gratuitement une maquette avec vos vraies informations Google, pour que vous voyiez le résultat avant de décider.</p></div>
+        <div class="etape"><span class="num">Étape 2</span><h3>Vous validez</h3><p>Vous nous envoyez vos photos et votre logo, vous réglez en ligne, et on ajuste les détails avec vous.</p></div>
+        <div class="etape"><span class="num">Étape 3</span><h3>C'est en ligne</h3><p>Votre site est publié sous 72 h. On ajoute le lien sur votre fiche Google pour que vos clients le trouvent.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="nfc">
+    <div class="wrap">
+      <div>
+        <span class="etiquette">Cartes NFC</span>
+        <h2>Plus d'avis Google, sans rien demander deux fois</h2>
+        <p>Un client satisfait ne pense pas toujours à laisser un avis. Avec une carte posée sur le comptoir ou près de la caisse, il lui suffit d'approcher son téléphone : votre page d'avis s'ouvre directement.</p>
+        <p>Plus d'avis, c'est une meilleure place sur Google Maps quand quelqu'un cherche « coiffeur Cergy » ou « pizzeria près de moi ».</p>
+      </div>
+      <div class="carte-nfc" role="img" aria-label="Carte NFC Laissez-nous un avis Google">
+        <svg class="ondes" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M14 13c5 6 5 14 0 20"/><path d="M22 8c8 9 8 21 0 30"/><path d="M30 3c11 12 11 28 0 40"/></svg>
+        <span class="etoiles">★★★★★</span>
+        <div><b>Vous avez aimé ?<br>Laissez-nous un avis</b><br><small>Approchez votre téléphone de la carte</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap faq">
+      <div class="entete"><h2>Questions fréquentes</h2></div>
+      <details><summary>Je n'ai pas le temps de m'en occuper.</summary><p>C'est justement le principe : on récupère les informations de votre fiche Google, on prépare tout, et vous n'avez qu'à valider et envoyer quelques photos. Comptez 10 minutes de votre côté.</p></details>
+      <details><summary>J'ai déjà une page Facebook ou Instagram.</summary><p>C'est très bien pour garder le contact avec vos clients. Mais beaucoup de gens cherchent sur Google et n'ont pas de compte Facebook. Un site rassure, apparaît dans les recherches et donne toutes les infos utiles en un coup d'œil.</p></details>
+      <details><summary>Est-ce qu'il y a des frais cachés ?</summary><p>Non. Le site est à 290 € une seule fois. Si vous voulez votre propre adresse (par exemple www.votre-salon.fr), le nom de domaine coûte environ 10 € par an chez l'hébergeur et reste à votre nom. La maintenance à 20 €/mois est optionnelle et sans engagement.</p></details>
+      <details><summary>Et si le site ne me plaît pas ?</summary><p>Vous voyez une maquette gratuite avant de payer quoi que ce soit. On ajuste ensuite les textes, les couleurs et les photos avec vous jusqu'à ce que le résultat vous convienne.</p></details>
+      <details><summary>Vous travaillez seulement à Cergy ?</summary><p>On travaille surtout avec les commerces de Cergy, Pontoise, Osny, Vauréal, Éragny, Saint-Ouen-l'Aumône et Jouy-le-Moutier, mais comme tout se fait à distance, on peut aider partout en France et en Espagne.</p></details>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div>
+        <h2>Parlons de votre commerce</h2>
+        <p>Écrivez-nous le nom de votre établissement : on vous répond sous 24 h avec une maquette gratuite et sans engagement.</p>
+      </div>
+      <div class="boite">
+        <small>Par email</small>
+        <span class="mail" id="mail">boosikdigital.contact@gmail.com</span>
+        <div class="actions">
+          <a class="btn btn-violet" href="mailto:boosikdigital.contact@gmail.com?subject=Demande%20de%20maquette">Écrire un email</a>
+          <button class="btn btn-ligne" type="button" id="copier">Copier l'adresse</button>
+        </div>
+        <small>Réponse en français, espagnol ou anglais.</small>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>Boosik Digital</h4>
+      <p>Sites web et visibilité Google pour les commerces de proximité · Cergy (95)</p>
+    </div>
+    <div id="mentions">
+      <h4>Mentions légales</h4>
+      <p>Éditeur : Jorge Reyes, Boosik Digital · boosikdigital.contact@gmail.com.<br>
+      Hébergement : GitHub Pages, GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.<br>
+      Ce site n'utilise pas de cookies ni d'outil de suivi.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Copier l'adresse email
+  document.getElementById('copier').addEventListener('click', function () {
+    var b = this, el = document.getElementById('mail');
+    var ok = function () { b.textContent = 'Adresse copiée'; setTimeout(function () { b.textContent = "Copier l'adresse"; }, 1800); };
+    var repli = function () { var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    try { navigator.clipboard.writeText(el.textContent.trim()).then(ok, repli); } catch (e) { repli(); }
+  });
+</script>
+</body>
+</html>

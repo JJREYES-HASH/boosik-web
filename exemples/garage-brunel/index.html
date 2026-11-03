@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Garage Brunel</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap">
+<style>
+html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+
+/* Layout: héro photo atelier avec bandeau d'engagements, grille de forfaits à prix fixes, étapes d'une intervention, demande de devis avec plaque d'immatriculation. */
+:root {
+  --fond: #f2f3f5;
+  --blanc: #ffffff;
+  --graphite: #1c2026;
+  --graphite-2: #2a3038;
+  --encre: #15181d;
+  --encre-2: #59616d;
+  --bleu: #1f4fa8;
+  --orange: #f26b1d;
+  --ligne: #dadde2;
+  --clair: #f4f5f7;
+  --titre: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --texte: "Barlow", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fond: #111418; --blanc: #181c21; --graphite: #0b0d10; --graphite-2: #1a1f25;
+    --encre: #eef0f3; --encre-2: #a3abb6; --bleu: #5b8ae6; --orange: #ff8a45; --ligne: #2a3038; --clair: #f4f5f7; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --fond: #111418; --blanc: #181c21; --graphite: #0b0d10; --graphite-2: #1a1f25;
+  --encre: #eef0f3; --encre-2: #a3abb6; --bleu: #5b8ae6; --orange: #ff8a45; --ligne: #2a3038; --clair: #f4f5f7; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--fond); color: var(--encre); font-family: var(--texte); font-size: 17px; line-height: 1.6; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--graphite); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; }
+h1, h2, h3 { font-family: var(--titre); font-weight: 800; text-transform: uppercase; line-height: .98; margin: 0; letter-spacing: .005em; text-wrap: balance; }
+.kicker { font-family: var(--titre); font-weight: 600; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); }
+
+.demo { background: var(--orange); color: #1a0d04; font-size: 13px; text-align: center; padding-block: 6px; }
+
+header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--graphite); color: var(--clair); }
+header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--titre); font-weight: 800; font-size: 24px; text-transform: uppercase; letter-spacing: .02em; }
+.logo .pastille { width: 34px; height: 34px; background: var(--orange); color: #1a0d04; display: grid; place-items: center; font-size: 20px; }
+nav { display: flex; gap: 26px; font-weight: 500; font-size: 15px; }
+nav a { text-decoration: none; opacity: .8; }
+nav a:hover { opacity: 1; }
+.tel-entete { font-family: var(--titre); font-weight: 700; font-size: 20px; letter-spacing: .03em; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 700 17px/1 var(--titre); letter-spacing: .08em; text-transform: uppercase; padding: 16px 24px; border: 2px solid transparent; text-decoration: none; cursor: pointer; border-radius: 3px; }
+.btn-orange { background: var(--orange); color: #1a0d04; }
+.btn-orange:hover { filter: brightness(1.07); }
+.btn-ligne { border-color: rgba(244,245,247,.6); color: #f4f5f7; }
+.btn-ligne:hover { background: rgba(244,245,247,.1); }
+
+.hero { position: relative; color: #f4f5f7; background: #0e1013 url("img/atelier.jpg") center 40% / cover no-repeat; }
+.hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, rgba(10,12,15,.9) 0%, rgba(10,12,15,.7) 50%, rgba(10,12,15,.25) 100%); }
+.hero .wrap { position: relative; padding-block: 110px 120px; }
+.hero h1 { font-size: clamp(52px, 8vw, 104px); max-width: 12ch; margin: 14px 0 20px; }
+.hero p { font-size: 19px; max-width: 42ch; opacity: .9; margin: 0 0 32px; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.engagements { background: var(--bleu); color: #f4f5f7; }
+.engagements .wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.engagements .wrap > div { padding: 22px 20px; border-left: 1px solid rgba(244,245,247,.2); display: flex; flex-direction: column; gap: 2px; }
+.engagements .wrap > div:first-child { border-left: 0; padding-left: 0; }
+.engagements strong { font-family: var(--titre); font-weight: 700; font-size: 22px; text-transform: uppercase; letter-spacing: .02em; }
+.engagements span { font-size: 15px; opacity: .85; }
+
+section { padding-block: 84px; }
+.entete { display: flex; justify-content: space-between; align-items: end; gap: 16px 40px; flex-wrap: wrap; margin-bottom: 36px; }
+.entete h2 { font-size: clamp(40px, 5.5vw, 64px); }
+.entete p { color: var(--encre-2); max-width: 46ch; margin: 0; }
+
+.forfaits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.forfait { background: var(--blanc); border: 1px solid var(--ligne); padding: 26px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.forfait h3 { font-size: 28px; }
+.forfait p { color: var(--encre-2); margin: 0; font-size: 16px; }
+.forfait .prix { margin-top: auto; padding-top: 14px; border-top: 1px dashed var(--ligne); display: flex; align-items: baseline; gap: 8px; }
+.forfait .prix small { color: var(--encre-2); font-size: 14px; }
+.forfait .prix strong { font-family: var(--titre); font-size: 40px; font-weight: 800; color: var(--bleu); line-height: 1; font-variant-numeric: tabular-nums; }
+.forfait .duree { font-size: 14px; color: var(--encre-2); }
+
+.atelier { background: var(--graphite); color: #f4f5f7; }
+.atelier .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.atelier img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; border-radius: 3px; }
+.atelier h2 { font-size: clamp(40px, 5vw, 60px); margin: 12px 0 28px; }
+.etapes { list-style: none; padding: 0; margin: 0; display: grid; gap: 22px; counter-reset: etape; }
+.etapes li { display: grid; grid-template-columns: 48px 1fr; gap: 16px; counter-increment: etape; }
+.etapes li::before { content: counter(etape); font-family: var(--titre); font-weight: 800; font-size: 26px; width: 48px; height: 48px; display: grid; place-items: center; background: var(--graphite-2); border: 1px solid rgba(244,245,247,.18); color: var(--orange); }
+.etapes b { display: block; font-family: var(--titre); font-weight: 700; font-size: 21px; text-transform: uppercase; letter-spacing: .03em; }
+.etapes span { opacity: .8; font-size: 16px; }
+
+.devis .wrap { display: grid; grid-template-columns: .85fr 1.15fr; gap: 64px; align-items: start; }
+.coord { display: grid; gap: 0; margin-top: 26px; }
+.coord div { display: grid; grid-template-columns: 120px 1fr; gap: 12px; padding-block: 13px; border-bottom: 1px solid var(--ligne); font-size: 16px; }
+.coord dt { font-family: var(--titre); font-weight: 700; font-size: 15px; letter-spacing: .1em; text-transform: uppercase; color: var(--encre-2); }
+.coord dd { margin: 0; }
+form { background: var(--blanc); border: 1px solid var(--ligne); border-top: 4px solid var(--orange); padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+form h3 { grid-column: 1 / -1; font-size: 32px; }
+.plein { grid-column: 1 / -1; }
+label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 14px; }
+input, select, textarea { font: 16px var(--texte); padding: 13px 14px; border: 1.5px solid var(--ligne); background: var(--fond); color: var(--encre); border-radius: 3px; width: 100%; min-width: 0; }
+textarea { min-height: 96px; resize: vertical; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--bleu); }
+.plaque { display: flex; align-items: stretch; border: 2px solid #111; border-radius: 5px; overflow: hidden; background: #fff; max-width: 300px; }
+.plaque .ue { background: #1d3fb8; color: #fff; font: 700 13px var(--texte); display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding: 4px 7px; }
+.plaque input { border: 0; background: #fff; color: #111; font: 700 26px var(--titre); letter-spacing: .12em; text-transform: uppercase; text-align: center; padding: 8px 10px; border-radius: 0; }
+.aide { font-weight: 400; color: var(--encre-2); font-size: 13px; }
+.resultat { grid-column: 1 / -1; background: var(--fond); border-left: 4px solid var(--bleu); padding: 14px 16px; font-size: 16px; }
+
+footer { background: var(--graphite); color: rgba(244,245,247,.7); font-size: 14px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-block: 26px; }
+
+@media (max-width: 900px) {
+  nav, .tel-entete { display: none; }
+  .engagements .wrap { grid-template-columns: 1fr 1fr; }
+  .engagements .wrap > div:nth-child(3) { border-left: 0; padding-left: 0; }
+  .forfaits { grid-template-columns: 1fr 1fr; }
+  .atelier .wrap, .devis .wrap { grid-template-columns: 1fr; }
+  .hero .wrap { padding-block: 84px 88px; }
+  section { padding-block: 64px; }
+}
+@media (max-width: 560px) {
+  .engagements .wrap, .forfaits { grid-template-columns: 1fr; }
+  .engagements .wrap > div { border-left: 0; padding-left: 0; border-top: 1px solid rgba(244,245,247,.2); }
+  .engagements .wrap > div:first-child { border-top: 0; }
+  form { grid-template-columns: 1fr; padding: 22px; }
+  .coord div { grid-template-columns: 1fr; gap: 2px; }
+  header .btn { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="demo">Site de démonstration · garage fictif créé pour un portfolio</div>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#accueil"><span class="pastille" aria-hidden="true">B</span>Garage Brunel</a>
+    <nav aria-label="Navigation principale">
+      <a href="#forfaits">Forfaits</a>
+      <a href="#atelier">L'atelier</a>
+      <a href="#devis">Devis</a>
+    </nav>
+    <span class="tel-entete">01 00 00 00 95</span>
+    <a class="btn btn-orange" href="#devis">Devis gratuit</a>
+  </div>
+</header>
+
+<main id="accueil">
+  <div class="hero" role="img" aria-label="Mécanicien au travail dans l'atelier">
+    <div class="wrap">
+      <span class="kicker">Mécanique toutes marques · Osny</span>
+      <h1>Votre voiture réparée, le prix annoncé avant.</h1>
+      <p>Entretien, freinage, pneus, diagnostic électronique et préparation au contrôle technique. Devis gratuit sous 24 h, sans surprise sur la facture.</p>
+      <div class="cta">
+        <a class="btn btn-orange" href="#devis">Demander un devis</a>
+        <a class="btn btn-ligne" href="#forfaits">Voir les forfaits</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="engagements">
+    <div class="wrap">
+      <div><strong>Devis en 24 h</strong><span>gratuit et sans engagement</span></div>
+      <div><strong>Garantie 12 mois</strong><span>pièces et main-d'œuvre</span></div>
+      <div><strong>Véhicule de prêt</strong><span>sur réservation</span></div>
+      <div><strong>Carnet préservé</strong><span>entretien constructeur respecté</span></div>
+    </div>
+  </div>
+
+  <section id="forfaits">
+    <div class="wrap">
+      <div class="entete">
+        <h2>Forfaits à prix fixe</h2>
+        <p>Prix TTC pour une citadine ou une compacte, pièces et main-d'œuvre comprises. Pour un SUV ou un utilitaire, demandez un devis.</p>
+      </div>
+      <div class="forfaits">
+        <div class="forfait"><h3>Vidange + filtre</h3><p>Huile adaptée à votre moteur, filtre à huile, remise à zéro de l'indicateur.</p><span class="duree">45 min · sans rendez-vous le samedi</span><div class="prix"><small>à partir de</small><strong>69 €</strong></div></div>
+        <div class="forfait"><h3>Révision complète</h3><p>Vidange, filtres air et habitacle, contrôle des 40 points du carnet constructeur.</p><span class="duree">2 h</span><div class="prix"><small>à partir de</small><strong>159 €</strong></div></div>
+        <div class="forfait"><h3>Plaquettes avant</h3><p>Plaquettes de qualité équivalente à l'origine, contrôle des disques et du liquide.</p><span class="duree">1 h</span><div class="prix"><small>à partir de</small><strong>89 €</strong></div></div>
+        <div class="forfait"><h3>Pré-contrôle technique</h3><p>On vérifie les 133 points du contrôle technique et on corrige avant le passage.</p><span class="duree">45 min</span><div class="prix"><small>forfait</small><strong>39 €</strong></div></div>
+        <div class="forfait"><h3>Diagnostic électronique</h3><p>Lecture des codes défauts et explication claire. Déduit si vous faites la réparation chez nous.</p><span class="duree">30 min</span><div class="prix"><small>forfait</small><strong>49 €</strong></div></div>
+        <div class="forfait"><h3>Climatisation</h3><p>Recharge du gaz, contrôle d'étanchéité et traitement antibactérien.</p><span class="duree">1 h</span><div class="prix"><small>à partir de</small><strong>79 €</strong></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="atelier" id="atelier">
+    <div class="wrap">
+      <img src="img/etabli.jpg" alt="Établi d'atelier avec outils rangés" loading="lazy">
+      <div>
+        <span class="kicker">Comment ça se passe</span>
+        <h2>Pas de réparation sans votre accord</h2>
+        <ol class="etapes">
+          <li><div><b>Diagnostic</b><span>On regarde votre voiture et on vous explique le problème avec des mots simples.</span></div></li>
+          <li><div><b>Devis par SMS</b><span>Vous recevez le prix exact. Rien n'est fait tant que vous n'avez pas dit oui.</span></div></li>
+          <li><div><b>Réparation</b><span>Pièces de qualité d'origine, photos des pièces changées sur demande.</span></div></li>
+          <li><div><b>Restitution</b><span>Facture détaillée, garantie 12 mois et rappel pour le prochain entretien.</span></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="devis" id="devis">
+    <div class="wrap">
+      <div>
+        <div class="entete" style="margin-bottom:0"><h2>Nous trouver</h2></div>
+        <dl class="coord">
+          <div><dt>Adresse</dt><dd>Rue de l'Industrie, 95520 Osny <small>(adresse fictive)</small></dd></div>
+          <div><dt>Horaires</dt><dd>Lun.–ven. 8:00–12:00 · 13:30–18:30<br>Sam. 8:30–12:30</dd></div>
+          <div><dt>Téléphone</dt><dd>01 00 00 00 95</dd></div>
+          <div><dt>Accès</dt><dd>Parking client devant l'atelier · bus 34, arrêt Les Beaux Soleils</dd></div>
+        </dl>
+      </div>
+      <form id="form-devis" novalidate>
+        <h3>Devis gratuit en 24 h</h3>
+        <div class="plein">
+          <label for="immat">Immatriculation <span class="aide">On retrouve automatiquement le modèle de votre voiture</span></label>
+          <div class="plaque" style="margin-top:6px"><span class="ue">F</span><input id="immat" maxlength="9" value="AB-123-CD" aria-describedby="immat-aide"></div>
+          <span class="aide" id="immat-aide">Format AA-123-AA</span>
+        </div>
+        <label class="plein">Intervention
+          <select id="travaux">
+            <option>Vidange + filtre</option><option>Révision complète</option><option>Plaquettes avant</option>
+            <option>Pré-contrôle technique</option><option>Diagnostic électronique</option><option>Climatisation</option><option>Autre (préciser)</option>
+          </select>
+        </label>
+        <label>Kilométrage<input id="km" inputmode="numeric" value="84 000"></label>
+        <label>Téléphone<input id="tel" type="tel" autocomplete="tel" value="06 12 34 56 78"></label>
+        <label class="plein">Précisions <textarea id="details">Bruit à l'avant droit au freinage depuis une semaine.</textarea></label>
+        <button class="btn btn-orange plein" type="submit">Recevoir mon devis</button>
+        <div class="resultat" id="resultat" hidden></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© Garage Brunel · garage fictif</span>
+    <span>Photos : Wikimedia Commons (Igor Ovsyannykov et AJ Yorio, CC0)</span>
+  </div>
+</footer>
+
+<script>
+  // Plaque : majuscules et tirets automatiques (AA-123-AA)
+  var immat = document.getElementById('immat');
+  immat.addEventListener('input', function () {
+    var v = immat.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 7);
+    var parts = [v.slice(0, 2), v.slice(2, 5), v.slice(5, 7)].filter(Boolean);
+    immat.value = parts.join('-');
+  });
+
+  document.getElementById('form-devis').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var r = document.getElementById('resultat');
+    var ok = /^[A-Z]{2}-\d{3}-[A-Z]{2}$/.test(immat.value);
+    if (!ok) { r.textContent = 'La plaque doit suivre le format AA-123-AA (par exemple AB-123-CD).'; r.hidden = false; return; }
+    r.textContent = 'Demande enregistrée pour ' + immat.value + ' (' + document.getElementById('travaux').value.toLowerCase() + '). Sur le vrai site, le garage vous envoie le devis par SMS sous 24 h. (Démo : rien n\'a été envoyé.)';
+    r.hidden = false;
+  });
+</script>
+
+</body>
+</html>
