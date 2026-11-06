@@ -190,10 +190,22 @@ footer .rayitas i { width: 18px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .galeria img { transition: none; } }
 </style>
+<script>
+/* Caducidad de la maqueta: a partir de esta fecha la página deja de funcionar. Cambiar o borrar para la web final. */
+(function () {
+  var CADUCA = new Date("2026-11-14T00:00:00+01:00");
+  if (new Date() < CADUCA) return;
+  document.addEventListener("DOMContentLoaded", function () {
+    document.body.innerHTML = '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;font-family:system-ui,sans-serif;text-align:center;background:#111;color:#fff">' +
+      '<div><h1 style="font-size:28px;margin:0 0 12px">Esta maqueta ya no está disponible</h1>' +
+      '<p style="opacity:.8;margin:0">Maqueta preparada por Boosik Digital · boosikdigital.contact@gmail.com</p></div></div>';
+  });
+})();
+</script>
 </head>
 <body>
 
-<div class="maqueta" data-t="maqueta">Maqueta preparada para Andretta Pizzeria</div>
+<div class="maqueta" data-t="maqueta">Maqueta preparada para Andretta Pizzeria · disponible hasta el 13/11</div>
 
 <header>
   <div class="wrap">
@@ -453,7 +465,7 @@ var FOTOS = {
 };
 
 var T = {
-  es: { maqueta: "Maqueta preparada para Andretta Pizzeria", franja: "Pizzas · Pastas · Ensaladas · Snacks", navCarta: "Carta", navPedido: "Pedir", navReserva: "Reservar", navInfo: "Cómo llegar",
+  es: { maqueta: "Maqueta preparada para Andretta Pizzeria · disponible hasta el 13/11", franja: "Pizzas · Pastas · Ensaladas · Snacks", navCarta: "Carta", navPedido: "Pedir", navReserva: "Reservar", navInfo: "Cómo llegar",
     heroTexto: "Pizzas finas, crujientes y bien grandes en Can Picafort. Para comer aquí, para llevar o a domicilio.", heroPedir: "🍕 Pedir para llevar", heroReservar: "Reservar mesa",
     sello1: "Aparcamiento gratis", sello2: "Ideal para familias", sello3: "A domicilio", cartaTitulo: "La carta", galeriaTitulo: "Nuestras pizzas", galeriaTexto: "Finas, crujientes y recién salidas del horno. Estas son algunas de las favoritas de la casa.",
     altHero: "Pizza de jamón serrano y rúcula en una mesa de Andretta", altRucula: "Pizza Rúcula con jamón serrano, rúcula y parmesano", altBbq: "Pizza BBQ entera vista desde arriba", altPeperoni: "Porción de pizza Peperoni recién cortada", altBbqPorcion: "Porción de pizza BBQ levantada de la bandeja", altHawaiana: "Pizza Hawaiana servida en el comedor de Andretta",
@@ -464,7 +476,7 @@ var T = {
     comoLlegar: "Abrir en Google Maps", hechoPor: "Maqueta de Boosik Digital", verPedido: "Ver pedido", vacio: "Todavía no has añadido nada. Usa el botón + de la carta.",
     total: "Total", articulos: "artículos", articulo: "artículo", msgPedido: "¡Hola! Quiero hacer un pedido", msgReserva: "¡Hola! Quiero reservar mesa", modoRecoger: "Para recoger", modoDomicilio: "A domicilio",
     faltaPedido: "Añade algo de la carta primero 🙂", faltaNombre: "Escribe tu nombre" },
-  de: { maqueta: "Entwurf für Andretta Pizzeria", franja: "Pizzen · Pasta · Salate · Snacks", navCarta: "Speisekarte", navPedido: "Bestellen", navReserva: "Reservieren", navInfo: "Anfahrt",
+  de: { maqueta: "Entwurf für Andretta Pizzeria · verfügbar bis 13.11.", franja: "Pizzen · Pasta · Salate · Snacks", navCarta: "Speisekarte", navPedido: "Bestellen", navReserva: "Reservieren", navInfo: "Anfahrt",
     heroTexto: "Dünne, knusprige und große Pizzen in Can Picafort. Zum Hieressen, Mitnehmen oder Liefern.", heroPedir: "🍕 Zum Mitnehmen bestellen", heroReservar: "Tisch reservieren",
     sello1: "Kostenlose Parkplätze", sello2: "Familienfreundlich", sello3: "Lieferservice", cartaTitulo: "Speisekarte", galeriaTitulo: "Unsere Pizzen", galeriaTexto: "Dünn, knusprig und frisch aus dem Ofen. Einige der Lieblinge des Hauses.",
     altHero: "Pizza mit Serrano-Schinken und Rucola auf einem Tisch bei Andretta", altRucula: "Pizza Rúcula mit Serrano-Schinken, Rucola und Parmesan", altBbq: "Ganze BBQ-Pizza von oben", altPeperoni: "Frisch geschnittenes Stück Peperoni-Pizza", altBbqPorcion: "Stück BBQ-Pizza wird vom Teller gehoben", altHawaiana: "Pizza Hawaiana im Gastraum von Andretta",
@@ -475,7 +487,7 @@ var T = {
     comoLlegar: "In Google Maps öffnen", hechoPor: "Entwurf von Boosik Digital", verPedido: "Bestellung ansehen", vacio: "Noch nichts hinzugefügt. Nutzen Sie den +-Knopf in der Karte.",
     total: "Gesamt", articulos: "Artikel", articulo: "Artikel", msgPedido: "Hallo! Ich möchte bestellen", msgReserva: "Hallo! Ich möchte einen Tisch reservieren", modoRecoger: "Zum Abholen", modoDomicilio: "Lieferung",
     faltaPedido: "Bitte zuerst etwas aus der Karte hinzufügen 🙂", faltaNombre: "Bitte Ihren Namen eingeben" },
-  en: { maqueta: "Mock-up prepared for Andretta Pizzeria", franja: "Pizzas · Pasta · Salads · Snacks", navCarta: "Menu", navPedido: "Order", navReserva: "Book", navInfo: "Find us",
+  en: { maqueta: "Mock-up prepared for Andretta Pizzeria · available until 13/11", franja: "Pizzas · Pasta · Salads · Snacks", navCarta: "Menu", navPedido: "Order", navReserva: "Book", navInfo: "Find us",
     heroTexto: "Thin, crispy and generous pizzas in Can Picafort. Eat in, take away or delivered.", heroPedir: "🍕 Order takeaway", heroReservar: "Book a table",
     sello1: "Free parking", sello2: "Family friendly", sello3: "Delivery", cartaTitulo: "Menu", galeriaTitulo: "Our pizzas", galeriaTexto: "Thin, crispy and fresh from the oven. A few of the house favourites.",
     altHero: "Serrano ham and rocket pizza on a table at Andretta", altRucula: "Rúcula pizza with serrano ham, rocket and parmesan", altBbq: "Whole BBQ pizza seen from above", altPeperoni: "Freshly cut slice of Peperoni pizza", altBbqPorcion: "Slice of BBQ pizza being lifted from the tray", altHawaiana: "Hawaiana pizza served in Andretta's dining room",
