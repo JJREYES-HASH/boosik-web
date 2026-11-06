@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Andretta · Pizzería &amp; Restaurante · Can Picafort</title>
+<meta name="description" content="Pizzería en Can Picafort (Mallorca): pizzas finas y crujientes, pasta, hamburguesas y nachos. Pide para llevar o a domicilio por WhatsApp y reserva mesa. Aparcamiento gratis.">
+<meta name="robots" content="noindex">
+<link rel="preload" as="image" href="img/pizza-jamon-rucula-mesa.jpg" media="(min-width: 821px)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Rubik+Dirt&family=Josefin+Sans:wght@300;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Andretta Pizzería & Restaurante",
+  "telephone": "+34682148156",
+  "servesCuisine": ["Pizza", "Italiana", "Hamburguesas"],
+  "address": {"@type": "PostalAddress", "streetAddress": "Ctra. Artà-Alcúdia, 41b", "postalCode": "07458",
+              "addressLocality": "Can Picafort", "addressRegion": "Illes Balears", "addressCountry": "ES"},
+  "acceptsReservations": "True",
+  "hasMenu": "#carta",
+  "amenityFeature": [{"@type": "LocationFeatureSpecification", "name": "Aparcamiento gratuito", "value": true}]
+}
+</script>
+<style>
+/* Imagen de marca Andretta: negro y blanco, detalles de la bandera italiana, rayas de toldo gris claro. */
+:root {
+  --blanco: #ffffff;
+  --gris: #f3f3f3;
+  --gris-toldo: #dcdcdc;
+  --negro: #111111;
+  --negro-2: #000000;
+  --verde: #009246;
+  --rojo: #CE2B37;
+  --tinta: #111111;
+  --tinta-2: #555555;
+  --linea: #e2e2e2;
+  --logo: "Rubik Dirt", "Anton", Impact, sans-serif;
+  --titulo: "Anton", Impact, "Arial Narrow", sans-serif;
+  --fina: "Josefin Sans", "Helvetica Neue", Arial, sans-serif;
+  --texto: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+  --alto-header: 72px;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--blanco); color: var(--tinta); font-family: var(--texto); font-size: 17px; line-height: 1.55; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--rojo); outline-offset: 2px; border-radius: 4px; }
+.wrap { max-width: 1100px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; line-height: 1.05; text-wrap: balance; }
+h2 { font-family: var(--titulo); font-weight: 400; font-size: clamp(36px, 5vw, 54px); color: var(--negro); text-transform: uppercase; letter-spacing: .01em; }
+
+.maqueta { background: var(--negro-2); color: #fff; font-size: 13px; text-align: center; padding: 6px 12px; border-bottom: 1px solid #333; }
+
+/* Logo: ANDRETTA gastado + PIZZERÍA & RESTAURANTE fina + rayitas verde y roja */
+.marca { display: inline-flex; flex-direction: column; align-items: center; text-decoration: none; line-height: 1; }
+.marca .nombre { font-family: var(--logo); font-weight: 400; text-transform: uppercase; letter-spacing: .03em; }
+.marca .sub { font-family: var(--fina); font-weight: 300; text-transform: uppercase; letter-spacing: .32em; margin-right: -.32em; white-space: nowrap; }
+.rayitas { display: flex; gap: 5px; }
+.rayitas i { display: block; height: 3px; border-radius: 2px; }
+.rayitas i:first-child { background: var(--verde); }
+.rayitas i:last-child { background: var(--rojo); }
+
+/* Cabecera */
+header { position: sticky; top: 0; z-index: 20; background: var(--negro); color: #fff; }
+header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; }
+header .marca .nombre { font-size: 28px; }
+header .marca .sub { font-size: 8.5px; margin-top: 4px; }
+header .rayitas { margin-top: 5px; }
+header .rayitas i { width: 22px; }
+nav { display: flex; gap: 24px; font-family: var(--fina); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: .12em; }
+nav a { text-decoration: none; opacity: .9; }
+nav a:hover { opacity: 1; text-decoration: underline; text-decoration-color: var(--rojo); text-underline-offset: 6px; }
+.idiomas { display: flex; gap: 4px; background: rgba(255,255,255,.12); border-radius: 999px; padding: 3px; }
+.idiomas button { border: 0; background: transparent; color: #fff; font: 700 13px var(--texto); padding: 6px 10px; border-radius: 999px; cursor: pointer; }
+.idiomas button[aria-pressed="true"] { background: #fff; color: var(--negro); }
+
+/* Separador: rayas verticales gris claro tipo toldo */
+.toldo { height: 18px; background: repeating-linear-gradient(90deg, var(--blanco) 0 14px, var(--gris-toldo) 14px 28px); border-block: 1px solid var(--gris-toldo); }
+
+/* Franja del toldo */
+.franja { background: var(--negro); color: #fff; text-align: center; padding: 14px 16px; font-family: var(--fina); font-weight: 600; font-size: clamp(13px, 2.4vw, 18px); letter-spacing: .3em; text-transform: uppercase; }
+.franja span { margin-right: -.3em; }
+
+/* Héroe */
+.hero { position: relative; color: #fff; background: var(--negro); }
+.hero .wrap { position: relative; padding-block: 64px; display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; }
+.hero-foto { margin: 0; position: relative; }
+.hero-foto img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 18px; }
+.hero-foto::after { content: ""; position: absolute; left: 24px; right: 24px; bottom: -10px; height: 5px; background: linear-gradient(90deg, var(--verde) 0 50%, var(--rojo) 50% 100%); border-radius: 3px; }
+.hero h1 { margin-bottom: 4px; }
+.hero .marca { align-items: center; }
+.hero .marca .nombre { font-size: clamp(54px, 11vw, 112px); }
+.hero .marca .sub { font-size: clamp(11px, 1.8vw, 17px); margin-top: 10px; }
+.hero .rayitas { margin-top: 14px; gap: 8px; }
+.hero .rayitas i { width: clamp(40px, 7vw, 64px); height: 5px; }
+.hero p { font-size: 20px; max-width: 34ch; margin: 22px 0 28px; }
+.botones { display: flex; flex-wrap: wrap; gap: 12px; }
+/* Galería */
+.galeria { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 0; padding: 0; list-style: none; }
+.galeria figure { margin: 0; position: relative; border-radius: 14px; overflow: hidden; background: var(--gris); }
+.galeria img { width: 100%; aspect-ratio: 1; object-fit: cover; transition: transform .4s; }
+.galeria figure:hover img { transform: scale(1.04); }
+.galeria figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 28px 14px 12px; color: #fff; font-family: var(--titulo); font-size: 20px; text-transform: uppercase; letter-spacing: .02em; background: linear-gradient(transparent, rgba(0,0,0,.75)); }
+/* Fotos junto a la categoría de la carta */
+.fotos-cat { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 6px; margin: 8px 0 14px; border-radius: 12px; overflow: hidden; position: relative; }
+.fotos-cat::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255,255,255,.35), rgba(255,255,255,0) 60%); pointer-events: none; }
+.fotos-cat img { width: 100%; height: 110px; object-fit: cover; filter: saturate(.85); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 999px; padding: 15px 24px; font: 700 16px var(--texto); text-decoration: none; cursor: pointer; }
+.btn-rojo { background: var(--rojo); color: #fff; }
+.btn-blanco { background: #fff; color: var(--negro); }
+.btn-negro { background: var(--negro); color: #fff; }
+.btn-linea { background: transparent; color: var(--negro); border: 2px solid var(--negro); }
+.sellos { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 26px; font-weight: 500; }
+.sellos span::before { content: "✓ "; color: var(--verde); font-weight: 700; }
+
+section { padding-block: 64px; }
+.intro { display: flex; justify-content: space-between; align-items: end; gap: 12px 32px; flex-wrap: wrap; margin-bottom: 24px; }
+.intro p { color: var(--tinta-2); margin: 0; max-width: 46ch; }
+
+/* Carta */
+.cats { position: sticky; top: var(--alto-header); z-index: 10; background: var(--blanco); display: flex; gap: 8px; overflow-x: auto; padding: 10px 0; scrollbar-width: none; border-bottom: 1px solid var(--linea); }
+.cats a { flex: none; text-decoration: none; font-weight: 700; font-size: 15px; padding: 8px 14px; border-radius: 999px; background: var(--gris); color: var(--negro); }
+.cats a:hover { background: var(--negro); color: #fff; }
+.categoria { padding-top: 26px; scroll-margin-top: calc(var(--alto-header) + 60px); }
+.nota-cat { margin: 0 0 6px; padding: 10px 14px; background: var(--gris); border-left: 4px solid var(--verde); border-radius: 0 10px 10px 0; font-size: 14px; color: var(--tinta-2); }
+.plato.sin-precio { grid-template-columns: 1fr; }
+.categoria h3 { font-family: var(--titulo); font-weight: 400; font-size: 30px; color: var(--rojo); text-transform: uppercase; letter-spacing: .02em; margin-bottom: 8px; }
+.plato { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--linea); }
+.plato b { font-size: 18px; }
+.plato p { margin: 0; color: var(--tinta-2); font-size: 15px; grid-column: 1; }
+.precio { font-weight: 700; font-variant-numeric: tabular-nums; }
+.cantidad { grid-column: 2; grid-row: 2; display: flex; align-items: center; gap: 6px; justify-self: end; }
+.cantidad button { width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--negro); background: #fff; color: var(--negro); font: 700 18px var(--texto); cursor: pointer; line-height: 1; }
+.cantidad button.mas { background: var(--negro); color: #fff; }
+.cantidad span { min-width: 18px; text-align: center; font-weight: 700; }
+
+/* Barra de pedido */
+.barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 10px max(16px, env(safe-area-inset-left, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)); background: var(--negro); color: #fff; display: flex; justify-content: space-between; align-items: center; gap: 12px; box-shadow: 0 -6px 24px rgba(0,0,0,.25); border-top: 4px solid var(--rojo); }
+.barra b { font-size: 17px; }
+
+/* Pedido y reserva */
+.dos { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.caja { background: var(--gris); border-radius: 18px; padding: 26px; display: flex; flex-direction: column; gap: 14px; min-width: 0; border-top: 5px solid var(--negro); }
+.caja h3 { font-family: var(--titulo); font-weight: 400; font-size: 32px; color: var(--negro); text-transform: uppercase; }
+.resumen { background: #fff; border-radius: 12px; padding: 12px 14px; font-size: 15px; }
+.resumen div { display: flex; justify-content: space-between; gap: 10px; padding: 3px 0; }
+.resumen .total { border-top: 1px solid var(--linea); margin-top: 6px; padding-top: 8px; font-weight: 700; }
+form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.plena { grid-column: 1 / -1; }
+label { display: flex; flex-direction: column; gap: 5px; font-weight: 700; font-size: 14px; }
+input, select, textarea { font: 16px var(--texto); padding: 12px; border: 1.5px solid #d4d4d4; border-radius: 10px; background: #fff; color: var(--tinta); width: 100%; min-width: 0; }
+.segmento { display: flex; gap: 8px; }
+.segmento label { flex: 1; flex-direction: row; align-items: center; justify-content: center; gap: 8px; background: #fff; border: 1.5px solid #d4d4d4; border-radius: 10px; padding: 12px; cursor: pointer; }
+.segmento label:has(input:checked) { border-color: var(--negro); }
+.segmento input { width: auto; accent-color: var(--rojo); }
+.nota { font-size: 13px; color: var(--tinta-2); margin: 0; }
+
+/* Info */
+.info { background: var(--negro); color: #fff; }
+.info h2 { color: #fff; }
+.info .dos { align-items: start; }
+.dato { display: grid; grid-template-columns: 34px 1fr; gap: 10px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.18); }
+.dato .ico { font-size: 22px; }
+
+footer { background: var(--negro-2); color: rgba(255,255,255,.75); font-size: 14px; padding-bottom: 80px; }
+footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding-block: 24px; }
+footer .marca .nombre { font-size: 22px; color: #fff; }
+footer .marca .sub { font-size: 7.5px; margin-top: 4px; color: #fff; }
+footer .rayitas { margin-top: 5px; }
+footer .rayitas i { width: 18px; }
+
+@media (max-width: 480px) { .franja { letter-spacing: .16em; font-size: 12px; } .franja span { margin-right: -.16em; } }
+@media (max-width: 820px) {
+  nav { display: none; }
+  .hero { background: #000 url("img/pizza-jamon-rucula-mesa.jpg") center 30% / cover; }
+  .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.85)); }
+  .hero .wrap { grid-template-columns: 1fr; }
+  .hero-foto { display: none; }
+  .galeria { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .galeria figcaption { font-size: 16px; }
+  .fotos-cat img { height: 80px; }
+  .dos, form { grid-template-columns: 1fr; }
+  .hero .wrap { padding-block: 72px 64px; }
+  section { padding-block: 48px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .galeria img { transition: none; } }
+</style>
+</head>
+<body>
+
+<div class="maqueta" data-t="maqueta">Maqueta preparada para Andretta Pizzeria</div>
+
+<header>
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Andretta, Pizzería &amp; Restaurante"><span class="nombre">Andretta</span><span class="sub">Pizzería &amp; Restaurante</span><span class="rayitas" aria-hidden="true"><i></i><i></i></span></a>
+    <nav>
+      <a href="#carta" data-t="navCarta">Carta</a>
+      <a href="#pedido" data-t="navPedido">Pedir</a>
+      <a href="#reserva" data-t="navReserva">Reservar</a>
+      <a href="#info" data-t="navInfo">Cómo llegar</a>
+    </nav>
+    <div class="idiomas" role="group" aria-label="Idioma">
+      <button type="button" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-lang="de" aria-pressed="false">DE</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+<div class="franja"><span data-t="franja">Pizzas · Pastas · Ensaladas · Snacks</span></div>
+
+<main id="inicio">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+      <h1><span class="marca"><span class="nombre">Andretta</span><span class="sub">Pizzería &amp; Restaurante</span><span class="rayitas" aria-hidden="true"><i></i><i></i></span></span></h1>
+      <p data-t="heroTexto">Pizzas finas, crujientes y bien grandes en Can Picafort. Para comer aquí, para llevar o a domicilio.</p>
+      <div class="botones">
+        <a class="btn btn-rojo" href="#carta" data-t="heroPedir">🍕 Pedir para llevar</a>
+        <a class="btn btn-blanco" href="#reserva" data-t="heroReservar">Reservar mesa</a>
+      </div>
+      <div class="sellos">
+        <span data-t="sello1">Aparcamiento gratis</span>
+        <span data-t="sello2">Ideal para familias</span>
+        <span data-t="sello3">A domicilio</span>
+      </div>
+      </div>
+      <figure class="hero-foto"><img src="img/pizza-jamon-rucula-mesa.jpg" width="1101" height="1428" fetchpriority="high" alt="Pizza de jamón serrano y rúcula en una mesa de Andretta" data-alt="altHero"></figure>
+    </div>
+  </div>
+  <div class="toldo" aria-hidden="true"></div>
+
+  <section id="galeria">
+    <div class="wrap">
+      <div class="intro">
+        <h2 data-t="galeriaTitulo">Nuestras pizzas</h2>
+        <p data-t="galeriaTexto">Finas, crujientes y recién salidas del horno. Estas son algunas de las favoritas de la casa.</p>
+      </div>
+      <ul class="galeria">
+        <li><figure><img src="img/pizza-jamon-rucula.jpg" width="1254" height="1254" loading="lazy" alt="Pizza Rúcula con jamón serrano, rúcula y parmesano" data-alt="altRucula"><figcaption>09. Rúcula</figcaption></figure></li>
+        <li><figure><img src="img/pizza-barbacoa.jpg" width="1129" height="1393" loading="lazy" alt="Pizza BBQ entera vista desde arriba" data-alt="altBbq"><figcaption>07. BBQ</figcaption></figure></li>
+        <li><figure><img src="img/pizza-pepperoni.jpg" width="1536" height="1024" loading="lazy" alt="Porción de pizza Peperoni recién cortada" data-alt="altPeperoni" style="object-position: 70% 50%"><figcaption>05. Peperoni</figcaption></figure></li>
+        <li><figure><img src="img/pizza-barbacoa-porcion.jpg" width="1542" height="1020" loading="lazy" alt="Porción de pizza BBQ levantada de la bandeja" data-alt="altBbqPorcion" style="object-position: 60% 50%"><figcaption>07. BBQ</figcaption></figure></li>
+      </ul>
+    </div>
+  </section>
+  <div class="toldo" aria-hidden="true"></div>
+
+  <section id="carta">
+    <div class="wrap">
+      <div class="intro">
+        <h2 data-t="cartaTitulo">La carta</h2>
+        <p data-t="cartaTexto">Añade lo que quieras con el botón + y envíanos el pedido por WhatsApp. Sin apps ni comisiones.</p>
+      </div>
+      <div class="cats" id="cats"></div>
+      <div id="menu"></div>
+    </div>
+  </section>
+
+  <section id="pedido" style="padding-top:0">
+    <div class="wrap dos">
+      <div class="caja">
+        <h3 data-t="pedidoTitulo">Tu pedido</h3>
+        <div class="resumen" id="resumen"></div>
+        <form id="form-pedido">
+          <div class="segmento plena" role="radiogroup">
+            <label><input type="radio" name="modo" value="recoger" checked> <span data-t="recoger">Recoger</span></label>
+            <label><input type="radio" name="modo" value="domicilio"> <span data-t="domicilio">A domicilio</span></label>
+          </div>
+          <label><span data-t="nombre">Nombre</span><input id="p-nombre" autocomplete="name" required></label>
+          <label><span data-t="hora">Hora</span><input id="p-hora" type="time" value="20:30"></label>
+          <label class="plena" id="lbl-dir" hidden><span data-t="direccion">Dirección de entrega</span><input id="p-dir" autocomplete="street-address"></label>
+          <label class="plena"><span data-t="notas">Notas (alergias, sin cebolla…)</span><input id="p-notas"></label>
+          <button class="btn btn-rojo plena" type="submit" data-t="enviarPedido">Enviar pedido por WhatsApp</button>
+          <p class="nota plena" data-t="notaPedido">El pedido os llega directamente a vosotros, sin intermediarios.</p>
+        </form>
+      </div>
+      <div class="caja" id="reserva">
+        <h3 data-t="reservaTitulo">Reservar mesa</h3>
+        <form id="form-reserva">
+          <label><span data-t="nombre">Nombre</span><input id="r-nombre" autocomplete="name" required></label>
+          <label><span data-t="personas">Personas</span><input id="r-personas" type="number" min="1" max="30" value="2"></label>
+          <label><span data-t="dia">Día</span><input id="r-dia" type="date"></label>
+          <label><span data-t="hora">Hora</span><input id="r-hora" type="time" value="20:30"></label>
+          <button class="btn btn-negro plena" type="submit" data-t="enviarReserva">Reservar por WhatsApp</button>
+          <a class="btn btn-linea plena" id="llamar" href="#" data-t="llamar">📞 O llámanos</a>
+        </form>
+      </div>
+    </div>
+  </section>
+  <div class="toldo" aria-hidden="true"></div>
+  <div class="franja"><span data-t="franja">Pizzas · Pastas · Ensaladas · Snacks</span></div>
+
+  <section class="info" id="info">
+    <div class="wrap dos">
+      <div>
+        <h2 data-t="infoTitulo">Cómo llegar</h2>
+        <div class="dato"><span class="ico">📍</span><span>Ctra. Artà-Alcúdia, 41b<br>07458 Can Picafort, Mallorca</span></div>
+        <div class="dato"><span class="ico">🚗</span><span data-t="parking">Aparcamiento gratuito delante del local</span></div>
+        <div class="dato"><span class="ico">🕒</span><span data-t="horario">Horario: (a confirmar con el restaurante)</span></div>
+        <div class="dato"><span class="ico">📞</span><span id="tel-texto">—</span></div>
+        <div class="botones" style="margin-top:20px">
+          <a class="btn btn-blanco" href="https://www.google.com/maps/search/?api=1&query=Andretta+Pizzeria+Can+Picafort" target="_blank" rel="noopener" data-t="comoLlegar">Abrir en Google Maps</a>
+        </div>
+      </div>
+      <img src="img/pizza-hawaiana.jpg" width="1107" height="1421" loading="lazy" alt="Pizza Hawaiana servida en el comedor de Andretta" data-alt="altHawaiana" style="border-radius:18px;aspect-ratio:4/3;object-fit:cover;object-position:50% 60%;width:100%">
+    </div>
+  </section>
+</main>
+<div class="toldo" aria-hidden="true"></div>
+
+<footer>
+  <div class="wrap">
+    <span class="marca"><span class="nombre">Andretta</span><span class="sub">Pizzería &amp; Restaurante</span><span class="rayitas" aria-hidden="true"><i></i><i></i></span></span>
+    <span>© Andretta · Can Picafort</span>
+    <span data-t="hechoPor">Maqueta de Boosik Digital</span>
+  </div>
+</footer>
+
+<div class="barra" id="barra" hidden>
+  <b id="barra-texto"></b>
+  <a class="btn btn-blanco" href="#pedido" data-t="verPedido">Ver pedido</a>
+</div>
+
+<script>
+/* ===== CONFIGURACIÓN: cambiar al número de WhatsApp del restaurante (con prefijo 34, sin espacios ni +) ===== */
+var WHATSAPP = "34682148156";
+
+var MENU = [
+  { id: "pizzas", es: "Pizzas", de: "Pizzen", en: "Pizzas", nota: {"es": "Todas nuestras pizzas llevan salsa de tomate preparada con ajo y orégano, y queso mozzarella.", "de": "Alle unsere Pizzen werden mit Tomatensoße mit Knoblauch und Oregano sowie Mozzarella zubereitet.", "en": "All our pizzas come with tomato sauce made with garlic and oregano, and mozzarella cheese."}, platos: [
+    ["pizzas-1", "01. MARGHERITA", 12.8, "Base con salsa de tomate y queso", "Tomatensoße und Käse", "Tomato sauce and cheese"],
+    ["pizzas-2", "02. NAPOLITANA", 13.4, "Tomate en rodajas, albahaca y aceite de ajo", "Tomatenscheiben, Basilikum und Knoblauchöl", "Sliced tomato, basil and garlic oil"],
+    ["pizzas-3", "03. HAWAIANA", 14.2, "Jamón york y piña", "Kochschinken und Ananas", "Ham and pineapple"],
+    ["pizzas-4", "04. MALLORQUINA", 14.4, "Sobrasada y queso mahonés", "Sobrasada (mallorquinische Paprikawurst) und Mahón-Käse", "Sobrasada (Mallorcan cured sausage) and Mahón cheese"],
+    ["pizzas-5", "05. PEPERONI", 15.4, "Peperoni y cebolla roja", "Peperoni-Salami und rote Zwiebel", "Pepperoni and red onion"],
+    ["pizzas-6", "06. JAMÓN", 13.4, "Jamón york", "Kochschinken", "Ham"],
+    ["pizzas-7", "07. BBQ", 15.9, "Pollo en salsa barbacoa, cebolla, champiñones y bacon", "Hähnchen in Barbecuesoße, Zwiebel, Champignons und Bacon", "Chicken in barbecue sauce, onion, mushrooms and bacon"],
+    ["pizzas-8", "08. 4 QUESOS", 14.4, "Mozzarella, queso azul, parmesano y maasdam", "Mozzarella, Blauschimmelkäse, Parmesan und Maasdamer", "Mozzarella, blue cheese, parmesan and maasdam"],
+    ["pizzas-9", "09. RÚCULA", 14.4, "Rúcula, parmesano y jamón serrano", "Rucola, Parmesan und Serrano-Schinken", "Rocket, parmesan and serrano ham"],
+    ["pizzas-10", "10. MEDITERRÁNEA", 18.6, "Gambas, atún y mejillones", "Garnelen, Thunfisch und Miesmuscheln", "Prawns, tuna and mussels"],
+    ["pizzas-11", "11. SAN LUIS", 14.2, "Jamón york y champiñones", "Kochschinken und Champignons", "Ham and mushrooms"],
+    ["pizzas-12", "12. OLIVIA", 14.4, "Espinacas, maíz, champiñones y aceite de ajo", "Spinat, Mais, Champignons und Knoblauchöl", "Spinach, sweetcorn, mushrooms and garlic oil"],
+    ["pizzas-13", "13. ANDRETTA", 15.8, "Tiras de ternera picante, pimientos rojos y verdes, piña y aceite de ajo", "Scharfe Rindfleischstreifen, rote und grüne Paprika, Ananas und Knoblauchöl", "Spicy beef strips, red and green peppers, pineapple and garlic oil"],
+    ["pizzas-14", "14. VIKINGO", 16.9, "Salmón ahumado, alcaparras y huevo duro", "Räucherlachs, Kapern und hartgekochtes Ei", "Smoked salmon, capers and hard-boiled egg"],
+    ["pizzas-15", "15. PANCHO VILLA", 14.2, "Carne con chilli", "Chili con Carne", "Chilli con carne"],
+    ["pizzas-16", "16. BUEY", 14.8, "Trocitos de carne, bacon y cebolla", "Fleischstückchen, Bacon und Zwiebel", "Pieces of meat, bacon and onion"],
+    ["pizzas-17", "17. ROMA", 14.9, "Salami italiano y cebolla roja", "Italienische Salami und rote Zwiebel", "Italian salami and red onion"],
+    ["pizzas-18", "18. SAILOR", 15.1, "Atún, cebolla, olivas negras, pimiento rojo y verde", "Thunfisch, Zwiebel, schwarze Oliven, rote und grüne Paprika", "Tuna, onion, black olives, red and green pepper"],
+    ["pizzas-19", "19. LINA", 15.8, "Lonchas de ternera picante, cebolla y champiñones", "Scharfe Rindfleischscheiben, Zwiebel und Champignons", "Spicy beef slices, onion and mushrooms"],
+    ["pizzas-20", "20. LA MÁGICA", 16.9, "Anchoas y aceitunas negras", "Sardellen und schwarze Oliven", "Anchovies and black olives"],
+    ["pizzas-21", "21. ANTONIA", 17.4, "Atún, anchoas, piña y aceitunas negras", "Thunfisch, Sardellen, Ananas und schwarze Oliven", "Tuna, anchovies, pineapple and black olives"],
+    ["pizzas-22", "22. ANGEL", 16.9, "Salmón ahumado y huevo estrellado", "Räucherlachs und Spiegelei", "Smoked salmon and fried egg"],
+    ["pizzas-23", "23. NATURA", 13.2, "Cebolla, pimiento rojo y verde y orégano, con aceite de oliva (sin salsa de tomate) y mozzarella", "Zwiebel, rote und grüne Paprika und Oregano, mit Olivenöl (ohne Tomatensoße) und Mozzarella", "Onion, red and green pepper and oregano, with olive oil (no tomato sauce) and mozzarella"],
+    ["pizzas-24", "24. DIÁVOLO", 17.1, "Pollo, peperoni, jalapeños y salsa picante", "Hähnchen, Peperoni-Salami, Jalapeños und scharfe Soße", "Chicken, pepperoni, jalapeños and hot sauce"],
+    ["pizzas-25", "25. Dulce Cabra", 15.8, "Queso de cabra, cebolla y confitura de pimientos", "Ziegenkäse, Zwiebel und Paprikakonfitüre", "Goat's cheese, onion and pepper jam"],
+    ["pizzas-26", "26. Pizza Cabrona", 15.8, "Queso de cabra, cebolla y bacon", "Ziegenkäse, Zwiebel und Bacon", "Goat's cheese, onion and bacon"]
+  ]},
+  { id: "entrantes", es: "Entrantes", de: "Vorspeisen", en: "Starters", platos: [
+    ["entrantes-1", "1. Pan de ajo", 4.2, "", "Knoblauchbrot", "Garlic bread"],
+    ["entrantes-2", "2. Pan de ajo con queso", 4.9, "", "Knoblauchbrot mit Käse", "Garlic bread with cheese"],
+    ["entrantes-3", "3. Empanada de carne", 3.6, "Masa de hojaldre rellena de carne de ternera condimentada, con huevo duro y olivas.", "Blätterteig gefüllt mit gewürztem Rindfleisch, hartgekochtem Ei und Oliven.", "Puff pastry filled with seasoned beef, hard-boiled egg and olives."],
+    ["entrantes-4", "5. Nachos con queso y salsa picante", 7.3, "", "Nachos mit Käse und scharfer Soße", "Nachos with cheese and hot sauce"],
+    ["entrantes-5", "6. Nachos con carne con chilli, queso y salsa picante", 8.3, "", "Nachos mit Chili con Carne, Käse und scharfer Soße", "Nachos with chilli con carne, cheese and hot sauce"],
+    ["entrantes-6", "8. Camembert frito con salsa de arándanos", 7.6, "Queso camembert frito acompañado de salsa de arándanos.", "Frittierter Camembert mit Preiselbeersoße.", "Fried camembert served with cranberry sauce."],
+    ["entrantes-7", "10. Patatas Fritas", 5.4, "", "Pommes frites", "French fries"],
+    ["entrantes-8", "11. Huevos rotos a nuestro estilo con jamón serrano", 7.8, "", "Spiegeleier auf Pommes nach Art des Hauses, mit Serrano-Schinken", "Fried eggs over chips, our way, with serrano ham"],
+    ["entrantes-9", "12. Pan, olivas y alioli", 5.4, "", "Brot, Oliven und Aioli", "Bread, olives and aioli"]
+  ]},
+  { id: "ensaladas", es: "Ensaladas", de: "Salate", en: "Salads", platos: [
+    ["ensaladas-1", "81. Ensalada CAPRESE", 12.3, "Tomate, mozzarella fresca, albahaca y salsa de espinacas", "Tomate, frischer Mozzarella, Basilikum und Spinatsoße", "Tomato, fresh mozzarella, basil and spinach sauce"],
+    ["ensaladas-2", "82. Ensalada de ATÚN", 14.8, "Atún, lechuga, zanahoria, cebolla roja y huevo duro", "Thunfisch, Blattsalat, Karotte, rote Zwiebel und hartgekochtes Ei", "Tuna, lettuce, carrot, red onion and hard-boiled egg"],
+    ["ensaladas-3", "83. Ensalada Mixta", 10.9, "Lechuga, tomate, cebolla y zanahoria", "Blattsalat, Tomate, Zwiebel und Karotte", "Lettuce, tomato, onion and carrot"],
+    ["ensaladas-4", "84. Ensalada de SALMON", 16.9, "Salmón ahumado, huevo duro, lechuga, tomate y alcaparras", "Räucherlachs, hartgekochtes Ei, Blattsalat, Tomate und Kapern", "Smoked salmon, hard-boiled egg, lettuce, tomato and capers"],
+    ["ensaladas-5", "85. Ensalada muzzarella fresca y chip de remolacha", 14.8, "Mozzarella fresca, espinacas, rúcula, tomate seco, chips de remolacha y de boniato", "Frischer Mozzarella, Spinat, Rucola, getrocknete Tomaten, Rote-Bete- und Süßkartoffelchips", "Fresh mozzarella, spinach, rocket, sun-dried tomato, beetroot and sweet potato crisps"],
+    ["ensaladas-6", "86. Ensalada de POLLO", 14.6, "Pollo, lechuga, tomate cherry, crutones, lascas de parmesano y salsa César", "Hähnchen, Blattsalat, Kirschtomaten, Croûtons, Parmesanspäne und Caesar-Dressing", "Chicken, lettuce, cherry tomatoes, croutons, parmesan shavings and Caesar dressing"]
+  ]},
+  { id: "hamburguesas", es: "Hamburguesas", de: "Burger", en: "Burgers", platos: [
+    ["hamburguesas-1", "51. Hamburguesa de Pollo Crujiente", 13.9, "Con queso, bacon y mayonesa de ajo y perejil", "Mit Käse, Bacon und Knoblauch-Petersilien-Mayonnaise", "With cheese, bacon and garlic and parsley mayonnaise"],
+    ["hamburguesas-2", "52. Hamburguesa Vegetariana", 15.1, "De harina de arroz, proteína de guisante y remolacha, con cebolla crujiente, lechuga, tomate, lascas de parmesano y guacamole", "Aus Reismehl, Erbsenprotein und Roter Bete, mit Röstzwiebeln, Blattsalat, Tomate, Parmesanspänen und Guacamole", "Made from rice flour, pea protein and beetroot, with crispy onions, lettuce, tomato, parmesan shavings and guacamole"],
+    ["hamburguesas-3", "53. Hamburguesa Clásica", 13.9, "Carne de ternera, lechuga, tomate y queso", "Rindfleisch, Blattsalat, Tomate und Käse", "Beef, lettuce, tomato and cheese"],
+    ["hamburguesas-4", "54. Hamburguesa Rodrigo", 15.9, "Carne de ternera con lechuga, tomate, huevo a la plancha, queso, bacon, cebolla y salsa barbacoa", "Rindfleisch mit Blattsalat, Tomate, Spiegelei, Käse, Bacon, Zwiebel und Barbecuesoße", "Beef with lettuce, tomato, fried egg, cheese, bacon, onion and barbecue sauce"],
+    ["hamburguesas-5", "CHIVITO AL PAN", 16.8, "Carne de ternera, pan, lechuga, tomate, pimiento, cebolla, olivas, huevo duro, jamón york, queso y bacon", "Rindfleisch im Brot mit Blattsalat, Tomate, Paprika, Zwiebel, Oliven, hartgekochtem Ei, Kochschinken, Käse und Bacon", "Beef in a bun with lettuce, tomato, pepper, onion, olives, hard-boiled egg, ham, cheese and bacon"],
+    ["hamburguesas-6", "72. CHIVITO AL PLATO", 17.7, "Carne de ternera, lechuga, tomate, pimientos, cebolla, olivas, huevo a la plancha, jamón york, queso y bacon", "Rindfleisch auf dem Teller mit Blattsalat, Tomate, Paprika, Zwiebel, Oliven, Spiegelei, Kochschinken, Käse und Bacon", "Beef on a plate with lettuce, tomato, peppers, onion, olives, fried egg, ham, cheese and bacon"]
+  ]},
+  { id: "carnes", es: "Carnes", de: "Fleischgerichte", en: "Meat dishes", platos: [
+    ["carnes-1", "61. Escalopes de Cerdo", 12.6, "Lomo de cerdo empanado y patatas fritas", "Paniertes Schweinelendenschnitzel mit Pommes frites", "Breaded pork loin with fries"],
+    ["carnes-2", "63. Nugget de Pollo", 12.1, "Nuggets de pollo con patatas fritas y kétchup", "Chicken Nuggets mit Pommes frites und Ketchup", "Chicken nuggets with fries and ketchup"],
+    ["carnes-3", "90. Currywurst", 15.1, "Salchicha alemana con salsa currywurst de la casa y patatas fritas", "Deutsche Bratwurst mit hausgemachter Currywurstsoße und Pommes frites", "German sausage with our homemade currywurst sauce and fries"]
+  ]},
+  { id: "vinos", es: "Vinos", de: "Weine", en: "Wines", platos: [
+    ["vinos-1", "4.1 De la casa Rioja: Blanco, Rosado o Tinto", 16.1, "", "Hauswein Rioja: weiß, rosé oder rot", "House Rioja: white, rosé or red"],
+    ["vinos-1-media", "4.1 De la casa Rioja: Blanco, Rosado o Tinto (media)", 4.5, "Media", "Halbe", "Half"],
+    ["vinos-2", "4.2 Vino Blanco Verdejo", 16.1, "", "Weißwein Verdejo", "Verdejo white wine"],
+    ["vinos-2-media", "4.2 Vino Blanco Verdejo (media)", 4.5, "Media", "Halbe", "Half"],
+    ["vinos-3", "4.3 Vino Tinto Ribera del Duero", 26.1, "", "Rotwein Ribera del Duero", "Ribera del Duero red wine"]
+  ]},
+  { id: "refrescos", es: "Refrescos", de: "Erfrischungsgetränke", en: "Soft drinks", platos: [
+    ["refrescos-1", "1.1 Coca Cola, Cola Zero; Fanta Naranja o Limón", 2.7, "", "Coca-Cola, Cola Zero, Fanta Orange oder Zitrone", "Coca-Cola, Coke Zero, Fanta orange or lemon"],
+    ["refrescos-2", "1.5 Sprite, Aquarius Naranja o Limón o Tónica", 2.7, "", "Sprite, Aquarius Orange oder Zitrone, oder Tonic Water", "Sprite, Aquarius orange or lemon, or tonic water"],
+    ["refrescos-3", "1.8 Nestea Limón o Maracuyá", 2.7, "", "Nestea Zitrone oder Maracuja", "Nestea lemon or passion fruit"],
+    ["refrescos-4", "3.1 Agua con o sin Gas 50cc", 2.6, "", "Wasser still oder mit Kohlensäure, 0,5 l", "Still or sparkling water, 50 cl"],
+    ["refrescos-5", "3.2 Agua Grande 1L", 3.6, "", "Großes Wasser, 1 l", "Large bottle of water, 1 l"]
+  ]},
+  { id: "pasta", es: "Pasta", de: "Pasta", en: "Pasta", nota: {"es": "El precio lo marca la salsa. Añade la salsa y escribe en las notas del pedido si la quieres con espaguetis, macarrones o ravioles.", "de": "Der Preis richtet sich nach der Soße. Fügen Sie die Soße hinzu und schreiben Sie in die Hinweise, ob Sie Spaghetti, Makkaroni oder Ravioli möchten.", "en": "The price depends on the sauce. Add the sauce and tell us in the order notes whether you'd like spaghetti, macaroni or ravioli."}, platos: [
+    ["pasta-1", "21. Espaguetis o Macarrones", null, "Tú eliges con qué salsa acompañarlos (precio según la salsa)", "Sie wählen die Soße dazu (Preis je nach Soße)", "You choose the sauce (price depends on the sauce)"],
+    ["pasta-2", "23. Ravioles de Espinaca", null, "Vegetarianos, tú eliges la salsa para acompañarlos", "Vegetarisch, Sie wählen die Soße dazu", "Vegetarian, you choose the sauce"],
+    ["pasta-3", "24. Lasaña Mixta", 14.8, "De verdura y carne", "Mit Gemüse und Fleisch", "With vegetables and meat"],
+    ["pasta-4", "31. Salsa Bolognesa", 12.8, "Salsa de tomate, cebolla, zanahoria, carne picada y condimentos", "Tomatensoße, Zwiebel, Karotte, Hackfleisch und Gewürze", "Tomato sauce, onion, carrot, minced meat and seasoning"],
+    ["pasta-5", "32. Salsa Fileto", 10.9, "Salsa de tomate, ajo, orégano y albahaca", "Tomatensoße mit Knoblauch, Oregano und Basilikum", "Tomato sauce with garlic, oregano and basil"],
+    ["pasta-6", "33. Salsa 4 Quesos", 13.8, "Queso azul, parmesano, maasdam y mozzarella", "Blauschimmelkäse, Parmesan, Maasdamer und Mozzarella", "Blue cheese, parmesan, maasdam and mozzarella"],
+    ["pasta-7", "34. Salsa a la crema", 13.8, "Cebolla, bacon, champiñones, nata y parmesano", "Zwiebel, Bacon, Champignons, Sahne und Parmesan", "Onion, bacon, mushrooms, cream and parmesan"],
+    ["pasta-8", "35. Salsa Pesto Rojo", 13.6, "Tomate seco, cebolla, zanahoria, calabacín y champiñones", "Getrocknete Tomaten, Zwiebel, Karotte, Zucchini und Champignons", "Sun-dried tomato, onion, carrot, courgette and mushrooms"],
+    ["pasta-9", "36. Salsa Arrabiata con carne", 14.2, "Cebolla, ajo, albahaca, guindilla y carne de ternera picante", "Zwiebel, Knoblauch, Basilikum, Chili und scharfes Rindfleisch", "Onion, garlic, basil, chilli and spicy beef"],
+    ["pasta-10", "41. WOK DE VEGETALES", 14.8, "Noodles con verduras variadas, aceite de sésamo, salsa de soja y agridulce", "Nudeln mit verschiedenem Gemüse, Sesamöl, Sojasoße und süß-saurer Soße", "Noodles with mixed vegetables, sesame oil, soy sauce and sweet and sour sauce"],
+    ["pasta-11", "42. WOK CON POLLO Y LANGOSTINOS", 16.3, "Noodles con verduras variadas, pollo, langostinos, aceite de sésamo, salsa de soja y agridulce", "Nudeln mit verschiedenem Gemüse, Hähnchen, Garnelen, Sesamöl, Sojasoße und süß-saurer Soße", "Noodles with mixed vegetables, chicken, king prawns, sesame oil, soy sauce and sweet and sour sauce"]
+  ]},
+  { id: "cafes", es: "Cafés", de: "Kaffee", en: "Coffee", platos: [
+    ["cafes-1", "1. Café sólo", 1.4, "", "Schwarzer Kaffee", "Black coffee"],
+    ["cafes-2", "2. Espresso", 1.4, "", "", ""],
+    ["cafes-3", "3. Cortado", 1.6, "", "Espresso mit etwas Milch", "Espresso with a dash of milk"],
+    ["cafes-4", "4. Café con Leche", 1.9, "", "Milchkaffee", "White coffee"],
+    ["cafes-5", "5. Americano", 1.7, "", "Verlängerter Espresso", ""],
+    ["cafes-6", "6. Carajillo", 2.7, "", "Kaffee mit einem Schuss Weinbrand", "Coffee with a dash of brandy"],
+    ["cafes-7", "12. Infusión: Manzanilla, Roiboos, Poleo Menta o Frutos del Bosque", 2.5, "", "Kräutertee: Kamille, Rooibos, Polei-Minze oder Waldfrüchte", "Herbal tea: camomile, rooibos, pennyroyal mint or forest fruits"]
+  ]},
+  { id: "postres", es: "Postres caseros", de: "Hausgemachte Desserts", en: "Homemade desserts", platos: [
+    ["postres-1", "3.11 BROWNIE", 5.4, "", "", ""],
+    ["postres-2", "3.12 BANOFFEE", 5.4, "", "Banoffee Pie (Banane und Karamell)", "Banoffee pie (banana and toffee)"],
+    ["postres-3", "3.7 Helado de Vanilla, Fresa o de Chocolate", 3.1, "", "Vanille-, Erdbeer- oder Schokoladeneis", "Vanilla, strawberry or chocolate ice cream"],
+    ["postres-4", "3.10 Copa Triple", 5.3, "Helado de chocolate, vainilla y fresa", "Schokoladen-, Vanille- und Erdbeereis", "Chocolate, vanilla and strawberry ice cream"]
+  ]},
+  { id: "zumos", es: "Zumos", de: "Säfte", en: "Juices", platos: [
+    ["zumos-1", "2.1 Zumo de: Manzana, Piña, Naranja o Melocotón", 2.6, "", "Saft: Apfel, Ananas, Orange oder Pfirsich", "Juice: apple, pineapple, orange or peach"]
+  ]},
+  { id: "extras", es: "Extras", de: "Extras", en: "Extras", platos: [
+    ["extras-1", "13. Extras: Pan, Olivas, Alioli o Guacamole", 2.1, "", "Extras: Brot, Oliven, Aioli oder Guacamole", "Extras: bread, olives, aioli or guacamole"],
+    ["extras-2", "14. Olivas", 2.1, "", "Oliven", "Olives"],
+    ["extras-3", "15. Alioli", 2.1, "", "Aioli", "Aioli"],
+    ["extras-4", "16. Guacamole", 2.1, "", "", ""]
+  ]}
+];
+
+/* Fotos de ambiente al inicio de algunas categorías. Solo decorativas (alt vacío): no representan ningún plato concreto.
+   Va aparte de MENU para que herramientas/genmenu.py no las sobrescriba. */
+var FOTOS = {
+  entrantes: [{ src: "img/empanadillas.jpg", pos: "50% 60%" }],
+  pasta: [{ src: "img/pasta-carbonara.jpg", pos: "50% 45%" }, { src: "img/wok-gambas.jpg", pos: "50% 30%" }],
+  postres: [{ src: "img/postre-tarta.jpg", pos: "50% 62%" }]
+};
+
+var T = {
+  es: { maqueta: "Maqueta preparada para Andretta Pizzeria", franja: "Pizzas · Pastas · Ensaladas · Snacks", navCarta: "Carta", navPedido: "Pedir", navReserva: "Reservar", navInfo: "Cómo llegar",
+    heroTexto: "Pizzas finas, crujientes y bien grandes en Can Picafort. Para comer aquí, para llevar o a domicilio.", heroPedir: "🍕 Pedir para llevar", heroReservar: "Reservar mesa",
+    sello1: "Aparcamiento gratis", sello2: "Ideal para familias", sello3: "A domicilio", cartaTitulo: "La carta", galeriaTitulo: "Nuestras pizzas", galeriaTexto: "Finas, crujientes y recién salidas del horno. Estas son algunas de las favoritas de la casa.",
+    altHero: "Pizza de jamón serrano y rúcula en una mesa de Andretta", altRucula: "Pizza Rúcula con jamón serrano, rúcula y parmesano", altBbq: "Pizza BBQ entera vista desde arriba", altPeperoni: "Porción de pizza Peperoni recién cortada", altBbqPorcion: "Porción de pizza BBQ levantada de la bandeja", altHawaiana: "Pizza Hawaiana servida en el comedor de Andretta",
+    cartaTexto: "Añade lo que quieras con el botón + y envíanos el pedido por WhatsApp. Sin apps ni comisiones.",
+    pedidoTitulo: "Tu pedido", recoger: "Recoger", domicilio: "A domicilio", nombre: "Nombre", hora: "Hora", direccion: "Dirección de entrega", notas: "Notas (alergias, sin cebolla…)",
+    enviarPedido: "Enviar pedido por WhatsApp", notaPedido: "El pedido llega directamente al restaurante, sin intermediarios.", reservaTitulo: "Reservar mesa", personas: "Personas", dia: "Día",
+    enviarReserva: "Reservar por WhatsApp", llamar: "📞 O llámanos", infoTitulo: "Cómo llegar", parking: "Aparcamiento gratuito delante del local", horario: "Horario: (a confirmar con el restaurante)",
+    comoLlegar: "Abrir en Google Maps", hechoPor: "Maqueta de Boosik Digital", verPedido: "Ver pedido", vacio: "Todavía no has añadido nada. Usa el botón + de la carta.",
+    total: "Total", articulos: "artículos", articulo: "artículo", msgPedido: "¡Hola! Quiero hacer un pedido", msgReserva: "¡Hola! Quiero reservar mesa", modoRecoger: "Para recoger", modoDomicilio: "A domicilio",
+    faltaPedido: "Añade algo de la carta primero 🙂", faltaNombre: "Escribe tu nombre" },
+  de: { maqueta: "Entwurf für Andretta Pizzeria", franja: "Pizzen · Pasta · Salate · Snacks", navCarta: "Speisekarte", navPedido: "Bestellen", navReserva: "Reservieren", navInfo: "Anfahrt",
+    heroTexto: "Dünne, knusprige und große Pizzen in Can Picafort. Zum Hieressen, Mitnehmen oder Liefern.", heroPedir: "🍕 Zum Mitnehmen bestellen", heroReservar: "Tisch reservieren",
+    sello1: "Kostenlose Parkplätze", sello2: "Familienfreundlich", sello3: "Lieferservice", cartaTitulo: "Speisekarte", galeriaTitulo: "Unsere Pizzen", galeriaTexto: "Dünn, knusprig und frisch aus dem Ofen. Einige der Lieblinge des Hauses.",
+    altHero: "Pizza mit Serrano-Schinken und Rucola auf einem Tisch bei Andretta", altRucula: "Pizza Rúcula mit Serrano-Schinken, Rucola und Parmesan", altBbq: "Ganze BBQ-Pizza von oben", altPeperoni: "Frisch geschnittenes Stück Peperoni-Pizza", altBbqPorcion: "Stück BBQ-Pizza wird vom Teller gehoben", altHawaiana: "Pizza Hawaiana im Gastraum von Andretta",
+    cartaTexto: "Fügen Sie mit + hinzu, was Sie möchten, und senden Sie die Bestellung per WhatsApp. Ohne Apps, ohne Gebühren.",
+    pedidoTitulo: "Ihre Bestellung", recoger: "Abholen", domicilio: "Lieferung", nombre: "Name", hora: "Uhrzeit", direccion: "Lieferadresse", notas: "Hinweise (Allergien, ohne Zwiebeln…)",
+    enviarPedido: "Bestellung per WhatsApp senden", notaPedido: "Die Bestellung geht direkt an das Restaurant.", reservaTitulo: "Tisch reservieren", personas: "Personen", dia: "Tag",
+    enviarReserva: "Per WhatsApp reservieren", llamar: "📞 Oder rufen Sie an", infoTitulo: "Anfahrt", parking: "Kostenlose Parkplätze vor dem Lokal", horario: "Öffnungszeiten: (wird bestätigt)",
+    comoLlegar: "In Google Maps öffnen", hechoPor: "Entwurf von Boosik Digital", verPedido: "Bestellung ansehen", vacio: "Noch nichts hinzugefügt. Nutzen Sie den +-Knopf in der Karte.",
+    total: "Gesamt", articulos: "Artikel", articulo: "Artikel", msgPedido: "Hallo! Ich möchte bestellen", msgReserva: "Hallo! Ich möchte einen Tisch reservieren", modoRecoger: "Zum Abholen", modoDomicilio: "Lieferung",
+    faltaPedido: "Bitte zuerst etwas aus der Karte hinzufügen 🙂", faltaNombre: "Bitte Ihren Namen eingeben" },
+  en: { maqueta: "Mock-up prepared for Andretta Pizzeria", franja: "Pizzas · Pasta · Salads · Snacks", navCarta: "Menu", navPedido: "Order", navReserva: "Book", navInfo: "Find us",
+    heroTexto: "Thin, crispy and generous pizzas in Can Picafort. Eat in, take away or delivered.", heroPedir: "🍕 Order takeaway", heroReservar: "Book a table",
+    sello1: "Free parking", sello2: "Family friendly", sello3: "Delivery", cartaTitulo: "Menu", galeriaTitulo: "Our pizzas", galeriaTexto: "Thin, crispy and fresh from the oven. A few of the house favourites.",
+    altHero: "Serrano ham and rocket pizza on a table at Andretta", altRucula: "Rúcula pizza with serrano ham, rocket and parmesan", altBbq: "Whole BBQ pizza seen from above", altPeperoni: "Freshly cut slice of Peperoni pizza", altBbqPorcion: "Slice of BBQ pizza being lifted from the tray", altHawaiana: "Hawaiana pizza served in Andretta's dining room",
+    cartaTexto: "Add what you like with the + button and send us your order on WhatsApp. No apps, no fees.",
+    pedidoTitulo: "Your order", recoger: "Pick up", domicilio: "Delivery", nombre: "Name", hora: "Time", direccion: "Delivery address", notas: "Notes (allergies, no onion…)",
+    enviarPedido: "Send order on WhatsApp", notaPedido: "Your order goes straight to the restaurant.", reservaTitulo: "Book a table", personas: "People", dia: "Day",
+    enviarReserva: "Book on WhatsApp", llamar: "📞 Or call us", infoTitulo: "Find us", parking: "Free parking in front", horario: "Opening hours: (to be confirmed)",
+    comoLlegar: "Open in Google Maps", hechoPor: "Mock-up by Boosik Digital", verPedido: "View order", vacio: "Nothing added yet. Use the + button on the menu.",
+    total: "Total", articulos: "items", articulo: "item", msgPedido: "Hi! I'd like to place an order", msgReserva: "Hi! I'd like to book a table", modoRecoger: "Pick up", modoDomicilio: "Delivery",
+    faltaPedido: "Add something from the menu first 🙂", faltaNombre: "Please enter your name" }
+};
+
+var lang = "es", pedido = {};
+var euros = function (n) { return n.toLocaleString(lang === "en" ? "en-GB" : lang === "de" ? "de-DE" : "es-ES", { style: "currency", currency: "EUR" }); };
+var plato = function (id) { for (var c of MENU) for (var p of c.platos) if (p[0] === id) return p; };
+var idx = { es: 3, de: 4, en: 5 };
+
+function pintarMenu() {
+  document.getElementById("cats").innerHTML = MENU.map(function (c) { return '<a href="#cat-' + c.id + '">' + c[lang] + "</a>"; }).join("");
+  document.getElementById("menu").innerHTML = MENU.map(function (c) {
+    var banda = FOTOS[c.id] ? '<div class="fotos-cat" aria-hidden="true">' + FOTOS[c.id].map(function (f) {
+      return '<img src="' + f.src + '" loading="lazy" alt="" style="object-position:' + f.pos + '">'; }).join("") + "</div>" : "";
+    return '<div class="categoria" id="cat-' + c.id + '">' + banda + "<h3>" + c[lang] + "</h3>" + (c.nota ? '<p class="nota-cat">' + c.nota[lang] + "</p>" : "") + c.platos.map(function (p) {
+      var q = pedido[p[0]] || 0, desc = p[idx[lang]] ? "<p>" + p[idx[lang]] + "</p>" : "";
+      if (p[2] === null) return '<div class="plato sin-precio"><b>' + p[1] + "</b>" + desc + "</div>";
+      return '<div class="plato"><b>' + p[1] + '</b><span class="precio">' + euros(p[2]) + "</span>" + desc +
+        '<div class="cantidad"><button type="button" data-menos="' + p[0] + '" aria-label="− ' + p[1] + '">−</button><span>' + q +
+        '</span><button type="button" class="mas" data-mas="' + p[0] + '" aria-label="+ ' + p[1] + '">+</button></div></div>';
+    }).join("") + "</div>";
+  }).join("");
+}
+
+function pintarPedido() {
+  var t = T[lang], ids = Object.keys(pedido).filter(function (k) { return pedido[k] > 0; });
+  var total = 0, n = 0;
+  var filas = ids.map(function (k) { var p = plato(k); total += p[2] * pedido[k]; n += pedido[k];
+    return "<div><span>" + pedido[k] + "× " + p[1] + "</span><span>" + euros(p[2] * pedido[k]) + "</span></div>"; });
+  document.getElementById("resumen").innerHTML = ids.length ? filas.join("") + '<div class="total"><span>' + t.total + "</span><span>" + euros(total) + "</span></div>" : t.vacio;
+  var barra = document.getElementById("barra");
+  barra.hidden = n === 0;
+  document.getElementById("barra-texto").textContent = n + " " + (n === 1 ? t.articulo : t.articulos) + " · " + euros(total);
+  return { ids: ids, total: total };
+}
+
+function traducir() {
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-t]").forEach(function (el) { var v = T[lang][el.dataset.t]; if (v) el.textContent = v; });
+  document.querySelectorAll("[data-alt]").forEach(function (el) { var v = T[lang][el.dataset.alt]; if (v) el.alt = v; });
+  document.querySelectorAll("[data-lang]").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.lang === lang); });
+  pintarMenu(); pintarPedido();
+}
+
+function whatsapp(texto) { window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texto), "_blank", "noopener"); }
+
+document.addEventListener("click", function (ev) {
+  var mas = ev.target.closest("[data-mas]"), menos = ev.target.closest("[data-menos]"), l = ev.target.closest("[data-lang]");
+  if (mas) { pedido[mas.dataset.mas] = (pedido[mas.dataset.mas] || 0) + 1; pintarMenu(); pintarPedido(); }
+  if (menos) { pedido[menos.dataset.menos] = Math.max(0, (pedido[menos.dataset.menos] || 0) - 1); pintarMenu(); pintarPedido(); }
+  if (l) { lang = l.dataset.lang; try { localStorage.setItem("andretta-lang", lang); } catch (e) {} traducir(); }
+});
+
+document.querySelectorAll('input[name="modo"]').forEach(function (r) {
+  r.addEventListener("change", function () { document.getElementById("lbl-dir").hidden = r.value !== "domicilio" || !r.checked; });
+});
+
+document.getElementById("form-pedido").addEventListener("submit", function (ev) {
+  ev.preventDefault();
+  var t = T[lang], res = pintarPedido();
+  if (!res.ids.length) { alert(t.faltaPedido); location.hash = "#carta"; return; }
+  var nombre = document.getElementById("p-nombre").value.trim();
+  if (!nombre) { alert(t.faltaNombre); return; }
+  var modo = document.querySelector('input[name="modo"]:checked').value;
+  var lineas = [t.msgPedido + " 🍕", ""].concat(res.ids.map(function (k) { return "• " + pedido[k] + "× " + plato(k)[1]; }));
+  lineas.push("", t.total + ": " + euros(res.total), (modo === "domicilio" ? t.modoDomicilio : t.modoRecoger) + " · " + document.getElementById("p-hora").value);
+  if (modo === "domicilio") lineas.push(t.direccion + ": " + document.getElementById("p-dir").value);
+  var notas = document.getElementById("p-notas").value.trim(); if (notas) lineas.push(t.notas.split(" (")[0] + ": " + notas);
+  lineas.push(t.nombre + ": " + nombre);
+  whatsapp(lineas.join("\n"));
+});
+
+document.getElementById("form-reserva").addEventListener("submit", function (ev) {
+  ev.preventDefault();
+  var t = T[lang], nombre = document.getElementById("r-nombre").value.trim();
+  if (!nombre) { alert(t.faltaNombre); return; }
+  whatsapp([t.msgReserva + " 🍕", "", t.personas + ": " + document.getElementById("r-personas").value,
+    t.dia + ": " + document.getElementById("r-dia").value, t.hora + ": " + document.getElementById("r-hora").value, t.nombre + ": " + nombre].join("\n"));
+});
+
+(function iniciar() {
+  var d = new Date(); d.setDate(d.getDate() + 1); document.getElementById("r-dia").value = d.toISOString().slice(0, 10);
+  var tel = "+" + WHATSAPP.replace(/^(\d{2})(\d{3})(\d{3})(\d{3})$/, "$1 $2 $3 $4");
+  document.getElementById("tel-texto").textContent = tel;
+  document.getElementById("llamar").href = "tel:+" + WHATSAPP;
+  try { var g = localStorage.getItem("andretta-lang"); if (g && T[g]) lang = g; } catch (e) {}
+  if (!localStorage || lang === "es") { var nav = (navigator.language || "es").slice(0, 2); if (T[nav] && !(function(){try{return localStorage.getItem("andretta-lang")}catch(e){return null}})()) lang = nav; }
+  traducir();
+  var ajustar = function () { document.documentElement.style.setProperty("--alto-header", document.querySelector("header").offsetHeight + "px"); };
+  ajustar(); window.addEventListener("resize", ajustar);
+  if (document.fonts) document.fonts.ready.then(ajustar);
+})();
+</script>
+</body>
+</html>
